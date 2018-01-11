@@ -1,0 +1,10 @@
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/first_csharp/bin/Debug/netcoreapp2.0/first_csharp.deps.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/first_csharp/bin/Debug/netcoreapp2.0/first_csharp.runtimeconfig.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/first_csharp/bin/Debug/netcoreapp2.0/first_csharp.runtimeconfig.dev.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/first_csharp/bin/Debug/netcoreapp2.0/first_csharp.dll
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/first_csharp/bin/Debug/netcoreapp2.0/first_csharp.pdb
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/first_csharp/obj/Debug/netcoreapp2.0/first_csharp.csproj.CoreCompileInputs.cache
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/first_csharp/obj/Debug/netcoreapp2.0/first_csharp.AssemblyInfoInputs.cache
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/first_csharp/obj/Debug/netcoreapp2.0/first_csharp.AssemblyInfo.cs
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/first_csharp/obj/Debug/netcoreapp2.0/first_csharp.dll
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/first_csharp/obj/Debug/netcoreapp2.0/first_csharp.pdb

@@ -1,0 +1,10 @@
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/fundamentals_1/bin/Debug/netcoreapp2.0/fundamentals_1.deps.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/fundamentals_1/bin/Debug/netcoreapp2.0/fundamentals_1.runtimeconfig.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/fundamentals_1/bin/Debug/netcoreapp2.0/fundamentals_1.runtimeconfig.dev.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/fundamentals_1/bin/Debug/netcoreapp2.0/fundamentals_1.dll
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/fundamentals_1/bin/Debug/netcoreapp2.0/fundamentals_1.pdb
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/fundamentals_1/obj/Debug/netcoreapp2.0/fundamentals_1.csproj.CoreCompileInputs.cache
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/fundamentals_1/obj/Debug/netcoreapp2.0/fundamentals_1.AssemblyInfoInputs.cache
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/fundamentals_1/obj/Debug/netcoreapp2.0/fundamentals_1.AssemblyInfo.cs
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/fundamentals_1/obj/Debug/netcoreapp2.0/fundamentals_1.dll
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/fundamentals_1/obj/Debug/netcoreapp2.0/fundamentals_1.pdb
