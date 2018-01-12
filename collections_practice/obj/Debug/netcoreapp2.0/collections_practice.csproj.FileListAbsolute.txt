@@ -1,0 +1,10 @@
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/collections_practice/bin/Debug/netcoreapp2.0/collections_practice.deps.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/collections_practice/bin/Debug/netcoreapp2.0/collections_practice.runtimeconfig.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/collections_practice/bin/Debug/netcoreapp2.0/collections_practice.runtimeconfig.dev.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/collections_practice/bin/Debug/netcoreapp2.0/collections_practice.dll
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/collections_practice/bin/Debug/netcoreapp2.0/collections_practice.pdb
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/collections_practice/obj/Debug/netcoreapp2.0/collections_practice.csproj.CoreCompileInputs.cache
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/collections_practice/obj/Debug/netcoreapp2.0/collections_practice.AssemblyInfoInputs.cache
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/collections_practice/obj/Debug/netcoreapp2.0/collections_practice.AssemblyInfo.cs
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/collections_practice/obj/Debug/netcoreapp2.0/collections_practice.dll
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/collections_practice/obj/Debug/netcoreapp2.0/collections_practice.pdb
