@@ -17,6 +17,7 @@ namespace simple_crud_mysql
             //     }
             // }
 
+
             Console.WriteLine("Please provide some input.");
             string InputLine = Console.ReadLine();
             Console.WriteLine("Here is the input you provided:  {0}", InputLine);
