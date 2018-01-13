@@ -1,0 +1,11 @@
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/music-linq/bin/Debug/netcoreapp1.1/LinqSkeleton.deps.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/music-linq/bin/Debug/netcoreapp1.1/LinqSkeleton.runtimeconfig.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/music-linq/bin/Debug/netcoreapp1.1/LinqSkeleton.runtimeconfig.dev.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/music-linq/bin/Debug/netcoreapp1.1/LinqSkeleton.dll
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/music-linq/bin/Debug/netcoreapp1.1/LinqSkeleton.pdb
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/music-linq/obj/Debug/netcoreapp1.1/LinqSkeleton.csproj.CoreCompileInputs.cache
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/music-linq/obj/Debug/netcoreapp1.1/LinqSkeleton.AssemblyInfoInputs.cache
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/music-linq/obj/Debug/netcoreapp1.1/LinqSkeleton.AssemblyInfo.cs
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/music-linq/obj/Debug/netcoreapp1.1/LinqSkeleton.dll
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/music-linq/obj/Debug/netcoreapp1.1/LinqSkeleton.pdb
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/music-linq/obj/Debug/netcoreapp1.1/LinqSkeleton.csprojResolveAssemblyReference.cache
