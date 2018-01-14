@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using DbConnection;
+using System.Json;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Mvc;
 
 namespace simple_crud_mysql
 {
@@ -9,6 +12,11 @@ namespace simple_crud_mysql
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            List<Dictionary<string,object>> allUsers = DbConnector.Read();
+            string output = JsonConvert.SerializeObject(allUsers);
+            // Console.WriteLine(output);
+
+            DbConnector.Create();
 
             // List<Dictionary<string, object>> myQuery = DbConnector.Query("SELECT first_name, favorite_number FROM users");
             // foreach (Dictionary<string,object> dict in myQuery) {
@@ -17,10 +25,6 @@ namespace simple_crud_mysql
             //     }
             // }
 
-
-            Console.WriteLine("Please provide some input.");
-            string InputLine = Console.ReadLine();
-            Console.WriteLine("Here is the input you provided:  {0}", InputLine);
         }
     }
 }
