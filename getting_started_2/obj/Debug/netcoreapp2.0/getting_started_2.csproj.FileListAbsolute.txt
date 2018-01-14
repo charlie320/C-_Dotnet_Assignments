@@ -1,0 +1,10 @@
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/getting_started_2/bin/Debug/netcoreapp2.0/getting_started_2.deps.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/getting_started_2/bin/Debug/netcoreapp2.0/getting_started_2.runtimeconfig.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/getting_started_2/bin/Debug/netcoreapp2.0/getting_started_2.runtimeconfig.dev.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/getting_started_2/bin/Debug/netcoreapp2.0/getting_started_2.dll
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/getting_started_2/bin/Debug/netcoreapp2.0/getting_started_2.pdb
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/getting_started_2/obj/Debug/netcoreapp2.0/getting_started_2.csproj.CoreCompileInputs.cache
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/getting_started_2/obj/Debug/netcoreapp2.0/getting_started_2.AssemblyInfoInputs.cache
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/getting_started_2/obj/Debug/netcoreapp2.0/getting_started_2.AssemblyInfo.cs
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/getting_started_2/obj/Debug/netcoreapp2.0/getting_started_2.dll
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/getting_started_2/obj/Debug/netcoreapp2.0/getting_started_2.pdb

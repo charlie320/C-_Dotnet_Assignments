@@ -19,8 +19,8 @@ namespace YourNamespace.Controllers
     }
 
     [HttpGet]
-    [Route("displayint")]
-    public JsonResult DisplayInt()
+    [Route("displayjson")]
+    public JsonResult DisplayJson()
         {
             var AnonObject = new {
                                 FirstName = "Raz",

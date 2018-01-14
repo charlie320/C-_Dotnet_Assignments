@@ -21,17 +21,17 @@
   },
   "targets": {
     ".NETCoreApp,Version=v2.0": {
-      "calling_card/1.0.0": {
+      "getting_started_2/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.All": "2.0.3",
           "Microsoft.AspNetCore.Mvc": "2.0.2",
           "Microsoft.NETCore.App": "2.0.0"
         },
         "runtime": {
-          "calling_card.dll": {}
+          "getting_started_2.dll": {}
         },
         "compile": {
-          "calling_card.dll": {}
+          "getting_started_2.dll": {}
         }
       },
       "Libuv/1.10.0": {
@@ -3974,7 +3974,7 @@
     }
   },
   "libraries": {
-    "calling_card/1.0.0": {
+    "getting_started_2/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

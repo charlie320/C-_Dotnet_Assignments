@@ -34,7 +34,41 @@ namespace MusicApi.Controllers {
             instructions += "       *ListArtists=?(true/false)\n";
 
             return instructions;
+            }
 
-        }
+            [Route("artists")]
+            [HttpGet]
+            public List<Artist> GetArtists() {
+                // return "Artists will go here";
+                return allArtists;
+            }
+
+            [Route("artists/name/{name}")]
+            [HttpGet]
+            public IActionResult GetArtistByName(string name) {
+                IEnumerable<object> artistByName = allArtists.Where(artist => artist.ArtistName == name);
+                return Json(artistByName);
+            }
+
+            [Route("artists/realname/{name}")]
+            [HttpGet]
+            public IActionResult GetArtistByRealName(string name) {
+                IEnumerable<object> artistByRealName = allArtists.Where(artist => artist.RealName == name);
+                return Json(artistByRealName);
+            }
+
+            [Route("artists/hometown/{town}")]
+            [HttpGet]
+            public IActionResult GetArtistByHometown(string town) {
+                IEnumerable<object> artistByHometown = allArtists.Where(artist => artist.Hometown == town);
+                return Json(artistByHometown);
+            }
+
+            [Route("artists/groupid/{id}")]
+            [HttpGet]
+            public IActionResult GetArtistByGroupId(int id) {
+                IEnumerable<object> artistByGroupId = allArtists.Where(artist => artist.GroupId == id);
+                return Json(artistByGroupId);
+            }
     }
 }
