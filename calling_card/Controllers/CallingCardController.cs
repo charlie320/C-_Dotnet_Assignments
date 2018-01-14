@@ -2,10 +2,16 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
  
-namespace YourNamespace.Controllers
+namespace CallingCard.Controllers
 {
-    public class HelloController : Controller
+    public class CallingCardController : Controller
     {
+
+    [HttpGet]
+    [Route("")]
+    public IActionResult Index() {
+        return View("Index");
+    }
 
     [HttpGet]
     [Route("input/{first_name},{last_name},{age},{favorite_color}")]
