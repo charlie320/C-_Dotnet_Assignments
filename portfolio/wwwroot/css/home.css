@@ -1,0 +1,21 @@
+img {
+    margin: 15px;
+}
+
+h2 {
+    margin-left: 15px;
+}
+
+div {
+    width: 250px;
+    margin: 15px;
+}
+
+div > h2 {
+    height: auto;
+    text-align: center;
+}
+
+div > p {
+
+}

@@ -1,0 +1,10 @@
+.project-div {
+    display: inline-block;
+    width: 20%;
+    border: 5px solid black;
+
+}
+
+.project-div > h2 {
+    text-align: center;
+}
