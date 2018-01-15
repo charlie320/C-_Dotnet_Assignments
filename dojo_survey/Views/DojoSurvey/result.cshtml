@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/css/result.css" />
+    <title>Results</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Submitted Into</h2>
+        <div class="row">
+            <label>Name:</label>
+            <span>@ViewBag.name</span>
+        </div>
+        <div class="row">
+            <label>Dojo Location:</label>
+            <span>@ViewBag.location</span>
+        </div>
+        <div class="row">
+            <label>Favorite Language:</label>
+            <span>@ViewBag.language</span>
+        </div>
+        <div class="row">
+            <label>Comment:</label>
+            <span>@ViewBag.comment</span>
+        </div>
+        <div class="go-back">
+            <a href="index">Go Back</a>
+        </div>
+
+    </div>
+</body>
+</html>

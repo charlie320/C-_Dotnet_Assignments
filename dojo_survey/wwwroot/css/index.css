@@ -1,0 +1,36 @@
+.container {
+    text-align: left;
+    margin: auto;
+    padding: 15px;
+    width: 25%;
+    border: 5px solid #000000;
+}
+
+.column {
+    display: inline-block;
+}
+
+.row > label {
+    display: inline-block;
+    width: 150px;
+}
+
+.row > textarea {
+    width: 250px;
+    height: 75px;
+}
+
+h1 {
+    text-align: center;    
+}
+
+#submit-button {
+    position: relative;
+    float: right;
+    bottom: 25px;
+    width: 75px;
+    height: 25px;
+    border-radius: 3px;
+    background-color: slategray;
+    color: #ffffff;
+}
