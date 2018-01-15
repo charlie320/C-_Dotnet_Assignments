@@ -1,0 +1,10 @@
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/random_passcode/bin/Debug/netcoreapp2.0/random_passcode.deps.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/random_passcode/bin/Debug/netcoreapp2.0/random_passcode.runtimeconfig.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/random_passcode/bin/Debug/netcoreapp2.0/random_passcode.runtimeconfig.dev.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/random_passcode/bin/Debug/netcoreapp2.0/random_passcode.dll
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/random_passcode/bin/Debug/netcoreapp2.0/random_passcode.pdb
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/random_passcode/obj/Debug/netcoreapp2.0/random_passcode.csproj.CoreCompileInputs.cache
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/random_passcode/obj/Debug/netcoreapp2.0/random_passcode.AssemblyInfoInputs.cache
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/random_passcode/obj/Debug/netcoreapp2.0/random_passcode.AssemblyInfo.cs
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/random_passcode/obj/Debug/netcoreapp2.0/random_passcode.dll
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/random_passcode/obj/Debug/netcoreapp2.0/random_passcode.pdb

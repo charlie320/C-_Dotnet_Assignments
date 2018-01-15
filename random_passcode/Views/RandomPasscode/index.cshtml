@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="~/css/index.css" />
+        <title>Random Passcode</title>
+    </head>
+<body>
+    <h1>Welcome to Random Passcode</h1>
+    <h2>Random passcode (passcode #@ViewBag.numCount)</h2>
+    <div id="container1">
+        <h3>@ViewBag.randomString</h3>
+    </div>
+
+    <button onclick=" location.href='@Url.Action("newnumber", "RandomPasscode")' " method="get">Generate</button>
+</body>
+</html>
