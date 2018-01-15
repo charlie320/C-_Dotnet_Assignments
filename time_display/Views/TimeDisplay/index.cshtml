@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Time Display</title>
+    </head>
+    <body style="width=800px">
+        <h1 style="text-align: center">Welcome to DateTime Display!</h1>
+
+    @{
+        DateTime currentDateTime = DateTime.Now;
+        DateTime dateOnly = currentDateTime.Date;
+        TimeSpan timeOnly = currentDateTime.TimeOfDay;
+        string dateFormat = String.Format("{0:MMM d, yyyy}", dateOnly);
+        string timeFormat = String.Format("{0:h:mm tt}", currentDateTime);
+
+        <h2 style="text-align: center">The current date and time:</h2>
+        <div style="display: inline_block; width: 20%; margin: auto; border: 3px solid #000000">
+            <h1 style="text-align: center">@dateFormat</h1>
+            <h1 style="text-align: center">@timeFormat</h1>
+        </div>
+    }
+
+    </body>
+</html>

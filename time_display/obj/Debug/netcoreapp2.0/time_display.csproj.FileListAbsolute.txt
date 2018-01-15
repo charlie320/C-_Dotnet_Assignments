@@ -1,0 +1,10 @@
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/time_display/bin/Debug/netcoreapp2.0/time_display.deps.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/time_display/bin/Debug/netcoreapp2.0/time_display.runtimeconfig.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/time_display/bin/Debug/netcoreapp2.0/time_display.runtimeconfig.dev.json
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/time_display/bin/Debug/netcoreapp2.0/time_display.dll
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/time_display/bin/Debug/netcoreapp2.0/time_display.pdb
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/time_display/obj/Debug/netcoreapp2.0/time_display.csproj.CoreCompileInputs.cache
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/time_display/obj/Debug/netcoreapp2.0/time_display.AssemblyInfoInputs.cache
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/time_display/obj/Debug/netcoreapp2.0/time_display.AssemblyInfo.cs
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/time_display/obj/Debug/netcoreapp2.0/time_display.dll
+/Users/Charlie/Documents/Programming/reviews_practice/ms_visual_studio/Csharp_Dotnet_Assignments/time_display/obj/Debug/netcoreapp2.0/time_display.pdb
