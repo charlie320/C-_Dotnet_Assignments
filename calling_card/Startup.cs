@@ -28,6 +28,8 @@ namespace getting_started
                     app.UseDeveloperExceptionPage();
                 }
                 app.UseMvc();
+
+                app.UseStaticFiles();
         }
     }
 }
