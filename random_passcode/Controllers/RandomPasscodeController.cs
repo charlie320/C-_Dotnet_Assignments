@@ -16,19 +16,33 @@ namespace YourNamespace.Controllers
             return View("index");
         }
 
+        // [HttpGet]
+        // [Route("newnumber")]
+        // // public IActionResult NewNumber() {
+        // public int NewNumber() {            
+        //     @ViewBag.randomString = GenRanString();
+        //     int? psCount = HttpContext.Session.GetInt32("passcodeCount");
+        //     int psIntCount = (int)psCount;
+        //     psIntCount++;
+        //     ViewBag.numCount = psIntCount;
+        //     HttpContext.Session.SetInt32("passcodeCount", psIntCount);
+        //     // return View("index");
+        //     return (psIntCount);
+        // }
+
         [HttpGet]
         [Route("newnumber")]
-        public IActionResult NewNumber() {
-            // string randomString = GenRanString();
-            @ViewBag.randomString = GenRanString();
+        public int NewNumber() {            
             int? psCount = HttpContext.Session.GetInt32("passcodeCount");
             int psIntCount = (int)psCount;
             psIntCount++;
-            ViewBag.numCount = psIntCount;
+            @ViewBag.numCount = psIntCount;
             HttpContext.Session.SetInt32("passcodeCount", psIntCount);
-            return View("index");
-        }
+            return (psIntCount);
+        }        
 
+        [HttpGet]
+        [Route("randomstring")]
         public string GenRanString(){
             Random rand = new Random();
             string newString = "";

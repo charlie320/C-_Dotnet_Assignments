@@ -14,20 +14,20 @@
     </head>
 <body>
     <h1>Welcome to Random Passcode</h1>
-    <h2>Random passcode (passcode #<span id="pc-count">0</span>)</h2>
+    <h2>Random passcode (passcode #@ViewBag.numCount)</h2>
     <div id="container1">
-        <h3 id="random-string">Random String</h3>
+        <h3 id="random-string">@ViewBag.randomString</h3>
     </div>
 
+    <button onclick=" location.href='@Url.Action("newnumber", "RandomPasscode")' " method="get">Generate</button>
     <button onclick="incrementNum()">Generate</button>
 
     <script>
-        function incrementNum() {
-            $.get("/randomstring", function(response) {
-                document.getElementById("random-string").innerHTML = response;
-            });
+        function incrementNum() {    
             $.get("/newnumber", function(response) {
-                document.getElementById("pc-count").innerHTML = response;
+                var rs = "qwerty";
+                console.log("inside the incrementNum method.");
+                document.getElementById("random-string").innerHTML = response;
             });
         };
     </script>

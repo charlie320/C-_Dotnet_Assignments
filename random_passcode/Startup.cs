@@ -24,10 +24,6 @@ namespace random_passcode
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
-            // if (env.IsDevelopment())
-            // {
-            //     app.UseDeveloperExceptionPage();
-            // }
 
             app.UseSession();
             app.UseMvc();
