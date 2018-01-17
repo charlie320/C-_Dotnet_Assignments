@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Movie API";
+}
+<div class="container">
+    <h1>Movie Lookup:</h1>
+    <form action="search" method="POST">
+        <div class="form-container">
+            <div class="input-row">
+                <label>Search for a movie:</label><input type="text" name="movie">
+            </div>
+            <div>
+                <input type=submit Value="Search">
+            </div>
+        </div>
+    </form>
+    <p>Movie results will go in place of colors below</p>
+    @foreach (var color in @ViewBag.colors) {
+        <div class="results-row">
+            @color.Key = @color.Value
+        </div>
+    }
+
+</div>
