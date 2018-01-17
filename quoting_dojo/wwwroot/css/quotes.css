@@ -1,0 +1,8 @@
+a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: slategray;
+    border-radius: 3px;
+    border-color: #555555;
+    margin-top: 10px;
+}
