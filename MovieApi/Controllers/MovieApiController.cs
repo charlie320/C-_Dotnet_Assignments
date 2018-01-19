@@ -29,13 +29,18 @@ namespace MovieApi.Controllers
         [Route("search")]
         public IActionResult SearchMovie(string movie)
         {
-            var MovieInfo = new Dictionary<string, object>();
+            // var MovieInfo = new Dictionary<string, object>();
+            var MovieObject = new Movie();
+            
             WebRequest.GetMovieDataAsync(movie, ApiResponse =>
                 {
-                    MovieInfo = ApiResponse;
+                    MovieObject = ApiResponse;
                 }
             ).Wait();
-            Console.WriteLine(MovieInfo["results"]);
+
+            ViewBag.MovieInfo = MovieObject;
+            Console.WriteLine(MovieObject);
+            // Console.WriteLine(MovieInfo["results"]);
             return RedirectToAction("Index");  //  temporary line for now
         }
     }

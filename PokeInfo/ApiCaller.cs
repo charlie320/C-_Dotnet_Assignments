@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PokeInfo;
- 
+
 namespace ApiCaller
 {
     public class WebRequest
