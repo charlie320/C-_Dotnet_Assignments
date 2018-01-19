@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 using MySqlOpt;
 using ApiCallerOpt;
+using DbConnection;
 
 namespace MovieApi
 {
@@ -35,6 +36,7 @@ namespace MovieApi
             services.AddSession();
             services.Configure<MySqlOptions>(Configuration.GetSection("DBInfo"));
             services.Configure<ApiCallerOptions>(Configuration.GetSection("KeyInfo"));
+            services.AddScoped<DbConnector>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

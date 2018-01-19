@@ -16,14 +16,13 @@
         <h1>This is the Movie Api Page</h1>
         <div class="container">
             <h1>Movie Lookup:</h1>
-            <form action="search" method="POST">
+            <form id="movie-form" action="search" method="POST">
                 <div class="form-container">
                     <div class="input-row">
                         <label>Search for a movie:</label><input type="text" name="movie">
                     </div>
                     <div>
-                        <input type=submit Value="Search">
-                        <input >
+                        <button id="search-button">Search</button>
                     </div>
                 </div>
             </form>
@@ -33,8 +32,26 @@
                     @color.Key = @color.Value
                 </div>
             }
+            <div id="test-load">
 
+            </div>
         </div>
-        
+
+        <script>
+            $(document).ready(function() {
+            
+                $("#search-button").click(function() {
+                    $.post("/search",
+                    function(data,response) {
+                        Console.Log(response);
+                        });
+                    });
+                });
+
+        </script>
     </body>
 </html>
+
+
+
+

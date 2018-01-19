@@ -13,6 +13,11 @@ namespace MovieApi.Controllers
 {
     public class MovieApiController : Controller  // Name controller class after model such as "Hello" + "Controller"
     {
+        private readonly DbConnector _dbConnector;
+
+        public MovieApiController(DbConnector connect) {
+            _dbConnector = connect;
+        }
 
         // A GET method
         [HttpGet]
@@ -22,12 +27,13 @@ namespace MovieApi.Controllers
         {
             Dictionary<string,string> myDict = new Dictionary<string,string>() {{"red","#ff0000"},{"green","#00ff00"},{"blue","#0000ff"},{"gray","#777777"}};
             ViewBag.colors = myDict;
-            return View("index");
+            return View("index-ajax");
         }
 
         [HttpPost]
         [Route("search")]
         public IActionResult SearchMovie(string movie)
+        
         {
             // var MovieInfo = new Dictionary<string, object>();
             var MovieObject = new Movie();
@@ -39,9 +45,25 @@ namespace MovieApi.Controllers
             ).Wait();
 
             ViewBag.MovieInfo = MovieObject;
-            Console.WriteLine(MovieObject);
-            // Console.WriteLine(MovieInfo["results"]);
-            return RedirectToAction("Index");  //  temporary line for now
+            Console.WriteLine(MovieObject.Title);
+            Console.WriteLine(MovieObject.VoteAverage);
+            Console.WriteLine(MovieObject.ReleaseDate);
+
+            List<Dictionary<string,object>> AllMovies = _dbConnector.Create(MovieObject.Title,MovieObject.VoteAverage,MovieObject.ReleaseDate);
+            ViewBag.AllMovies = AllMovies;
+            return RedirectToAction("Index");
+            
         }
+
+        [HttpGet]
+        [Route("getmovies")]
+        public List<Dictionary<string,object>> GetMovies() {
+
+            List<Dictionary<string,object>> MovieList = new List<Dictionary<string,object>>();
+            MovieList = _dbConnector.Query("SELECT * FROM movies");
+            return MovieList;
+        }
+
+
     }
 }

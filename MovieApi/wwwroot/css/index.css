@@ -26,3 +26,11 @@ div.input-row > input {
 h1 {
     text-align: center;
 }
+
+button {
+    margin-top: 15px;
+    padding: 7px 15px;
+    color: white;
+    border-radius: 2px;
+    background-color: green;
+}

@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -30,20 +31,26 @@ namespace ApiCaller
                     string StringResponse = await Response.Content.ReadAsStringAsync(); // Read in the response as a string.
                     
                     JObject MovieObject = JsonConvert.DeserializeObject<JObject>(StringResponse);
+                    JArray ResultList = MovieObject["results"].Value<JArray>();                    
 
-                    JArray ResultList = MovieObject["results"].Value<JArray>();
-                    Console.WriteLine(ResultList);
-                    Console.WriteLine(ResultList.GetType());
+                    // foreach (var item in ResultList.Children()) {
+                    //     var itemProperties = item.Children<JProperty>();
+                    //     // Console.WriteLine(itemProperties);
+                    //     var myElement = itemProperties.FirstOrDefault(x => x.Name == "title");
+                    //     Console.WriteLine(myElement);
+                    //     var myElementValue = myElement.Value;
+                    //     // Console.WriteLine(myElementValue);
+                    // }
 
                     Movie MovieData = new Movie {
-                        // Title = MovieObject["title"].Value<string>(),
-                        // Title = ResultList["title"].Value<string>(),
-                        Title = "Titanic",                        
-                        VoteAverage = 2.0,
-                        ReleaseDate = "January 18, 2018"
+                        Title = ResultList.Children().First()["title"].Value<string>(),
+                        VoteAverage = ResultList.Children().First()["vote_average"].Value<double>(),
+                        ReleaseDate = ResultList.Children().First()["release_date"].Value<string>()
                     };
-                    Console.WriteLine(MovieData.Title);
-                    Console.Write(MovieData.VoteAverage);
+
+                    // Console.WriteLine(MovieData.Title);
+                    // Console.WriteLine(MovieData.VoteAverage);
+                    // Console.Write(MovieData.ReleaseDate);
 
                     // Then parse the result into JSON and convert to a dictionary that we can use.
                     // DeserializeObject will only parse the top level object, depending on the API we may need to dig deeper and continue deserializing
