@@ -1,0 +1,9 @@
+a {
+    padding: 5px 10px;
+    background-color: slategray;
+    color: white;
+    text-decoration: none;
+    border: 3px solid darkgray;
+    border-radius: 2px;
+    font-family: sans-serif;
+}

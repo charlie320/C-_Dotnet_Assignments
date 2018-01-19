@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="~/css/index.css" />
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous">
+        </script>
+        <title>Poke Info Page</title>
+    </head>
+    <body>
+        <h1>Poke Info Page.</h1>
+        <div class="container">
+            <div class="row">
+                <label>Name:  </label>
+                <label>@ViewBag.PokeInfo.Name</label>
+            </div>
+            <div class="row">
+                <label>Primary Type:  </label>
+                <label>@ViewBag.PokeInfo.Types[0]</label>
+            </div>
+            <div class="row">
+                <label>Height:  </label>
+                <label>@ViewBag.PokeInfo.Weight</label>
+            </div>
+            <div class="row">
+                <label>Weight:  </label>
+                <label>@ViewBag.PokeInfo.Height</label>
+            </div>
+            <div>
+                <img src=@ViewBag.PokeInfo.Sprite width="96px" height="96px" alt="sprite"/>                
+            </div>
+                <a href="/index">Back to Home Page</a>
+        </div>
+    </body>
+</html>
