@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using Microsoft.Extensions.Options;
 using MySql.Data.MySqlClient;
 using MySqlOpt;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
  
 namespace DbConnection
 {
@@ -73,8 +75,11 @@ namespace DbConnection
                           }
                           result.Add(dict);
                       }
+
+                      
                     //   Console.WriteLine(Read());
-                      return result;
+                    //   return result;
+                    return result;                    
                     }
                 }
             }        

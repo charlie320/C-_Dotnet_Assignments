@@ -11,7 +11,7 @@ using JsonData;
 
 namespace MovieApi.Controllers
 {
-    public class MovieApiController : Controller  // Name controller class after model such as "Hello" + "Controller"
+    public class MovieApiController : Controller
     {
         private readonly DbConnector _dbConnector;
 
@@ -19,7 +19,6 @@ namespace MovieApi.Controllers
             _dbConnector = connect;
         }
 
-        // A GET method
         [HttpGet]
         [Route("")]
         [Route("index")]
@@ -32,7 +31,7 @@ namespace MovieApi.Controllers
 
         [HttpPost]
         [Route("search")]
-        public IActionResult SearchMovie(string movie)
+        public IActionResult SearchMovie(string movie)               
         
         {
             var MovieObject = new Movie();
@@ -44,8 +43,10 @@ namespace MovieApi.Controllers
             ).Wait();
 
             List<Dictionary<string,object>> AllMovies = _dbConnector.Create(MovieObject.Title,MovieObject.VoteAverage,MovieObject.ReleaseDate);
-            // ViewBag.AllMovies = AllMovies;
-            return RedirectToAction("Index"); 
+            // List<Dictionary<string,object>> ThisMovie = _dbConnector.Query($"SELECT title, vote_average, release_date FROM movies WHERE title = '{MovieObject.Title}'");
+
+            return RedirectToAction("Index");
+
         }
 
         [HttpGet]
@@ -55,7 +56,6 @@ namespace MovieApi.Controllers
             MovieList = _dbConnector.Query("SELECT* FROM movies");
             return MovieList;
         }
-
 
     }
 }

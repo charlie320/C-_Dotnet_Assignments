@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="~/css/index.css" />
+        <script src="~/js/Moment.js"></script>
         <script
             src="https://code.jquery.com/jquery-3.2.1.js"
             integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
@@ -40,7 +41,7 @@
                     url: "/getmovies",
                     success: function(movies) {
                         $.each(movies, function(i, movie) {
-                            $movies.append("<p>" + movie.title + "     Rating: " + movie.vote_average + "     Released:  " + movie.release_date + "</p>");
+                            $movies.append("<p>" + movie.title + "     Rating: " + movie.vote_average + "     Released:  " + moment(movie.release_date).format("MMM D YYYY") + "</p>");
                         });
                     },
                     error: function() {
