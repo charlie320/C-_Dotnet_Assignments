@@ -35,21 +35,24 @@
             $(document).ready(function() {
                 var $movies = $("#movies");
                 var $movie = $("#movie");
+                function GetMovies() {
+                    $.ajax({
+                        type: "GET",
+                        url: "/getmovies",
+                        success: function(movies) {
+                            $.each(movies, function(i, movie) {
+                                $movies.append("<p>" + movie.title + "&nbsp; &nbsp;     Rating: " + movie.vote_average + "&nbsp; &nbsp;     Released:  " + moment(movie.release_date).format("MMM D YYYY") + "</p>");
+                            });
+                        },
+                        error: function() {
+                            alert("error loading movies");
+                        }
+                    });
+                }
 
-                $.ajax({
-                    type: "GET",
-                    url: "/getmovies",
-                    success: function(movies) {
-                        $.each(movies, function(i, movie) {
-                            $movies.append("<p>" + movie.title + "&nbsp; &nbsp;     Rating: " + movie.vote_average + "&nbsp; &nbsp;     Released:  " + moment(movie.release_date).format("MMM D YYYY") + "</p>");
-                        });
-                    },
-                    error: function() {
-                        alert("error loading movies");
-                    }
-                });
+                GetMovies();
 
-                $("#search-button").on(click, function() {
+                $("#search-button").click=( function() {
                     $.ajax({
                         type: "POST",
                         url: "/search",
@@ -60,7 +63,8 @@
                         error: function() {
                             alert("error saving movie");
                         }
-                    });
+                    });                   
+                    return false;
                 });
             });
 

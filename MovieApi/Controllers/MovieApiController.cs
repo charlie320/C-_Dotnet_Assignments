@@ -31,7 +31,8 @@ namespace MovieApi.Controllers
 
         [HttpPost]
         [Route("search")]
-        public IActionResult SearchMovie(string movie)               
+        public IActionResult SearchMovie(string movie)
+        // public void SearchMovie(string movie)        
         
         {
             var MovieObject = new Movie();
@@ -46,7 +47,6 @@ namespace MovieApi.Controllers
             // List<Dictionary<string,object>> ThisMovie = _dbConnector.Query($"SELECT title, vote_average, release_date FROM movies WHERE title = '{MovieObject.Title}'");
 
             return RedirectToAction("Index");
-
         }
 
         [HttpGet]
