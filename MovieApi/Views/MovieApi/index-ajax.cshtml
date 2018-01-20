@@ -19,34 +19,49 @@
             <form id="movie-form" action="search" method="POST">
                 <div class="form-container">
                     <div class="input-row">
-                        <label>Search for a movie:</label><input type="text" name="movie">
+                        <label>Search for a movie:</label><input type="text" id="movie" name="movie">
                     </div>
                     <div>
                         <button id="search-button">Search</button>
                     </div>
                 </div>
             </form>
-            <p>Movie results will go in place of colors below</p>
-            @foreach (var color in @ViewBag.colors) {
-                <div class="results-row">
-                    @color.Key = @color.Value
-                </div>
-            }
-            <div id="test-load">
 
-            </div>
+            <div id="movies">Movies</div>
         </div>
 
         <script>
             $(document).ready(function() {
-            
-                $("#search-button").click(function() {
-                    $.post("/search",
-                    function(data,response) {
-                        Console.Log(response);
+                var $movies = $("#movies");
+                var $movie = $("#movie");
+
+                $.ajax({
+                    type: "GET",
+                    url: "/getmovies",
+                    success: function(movies) {
+                        $.each(movies, function(i, movie) {
+                            $movies.append("<p>" + movie.title + "     Rating: " + movie.vote_average + "     Released:  " + movie.release_date + "</p>");
                         });
+                    },
+                    error: function() {
+                        alert("error loading movies");
+                    }
+                });
+
+                $("#search-button").on(click, function() {
+                    $.ajax({
+                        type: "POST",
+                        url: "/search",
+                        data: $movie,
+                        success: function(newMovie) {
+                            $movies.append("<p>" + newMovie.title + "     Rating: " + newMovie.vote_average + "     Released:  " + newMovie.release_date + "</p>");
+                        },
+                        error: function() {
+                            alert("error saving movie");
+                        }
                     });
                 });
+            });
 
         </script>
     </body>

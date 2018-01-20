@@ -35,7 +35,6 @@ namespace MovieApi.Controllers
         public IActionResult SearchMovie(string movie)
         
         {
-            // var MovieInfo = new Dictionary<string, object>();
             var MovieObject = new Movie();
             
             WebRequest.GetMovieDataAsync(movie, ApiResponse =>
@@ -44,23 +43,16 @@ namespace MovieApi.Controllers
                 }
             ).Wait();
 
-            ViewBag.MovieInfo = MovieObject;
-            Console.WriteLine(MovieObject.Title);
-            Console.WriteLine(MovieObject.VoteAverage);
-            Console.WriteLine(MovieObject.ReleaseDate);
-
             List<Dictionary<string,object>> AllMovies = _dbConnector.Create(MovieObject.Title,MovieObject.VoteAverage,MovieObject.ReleaseDate);
-            ViewBag.AllMovies = AllMovies;
-            return RedirectToAction("Index");
-            
+            // ViewBag.AllMovies = AllMovies;
+            return RedirectToAction("Index"); 
         }
 
         [HttpGet]
         [Route("getmovies")]
         public List<Dictionary<string,object>> GetMovies() {
-
             List<Dictionary<string,object>> MovieList = new List<Dictionary<string,object>>();
-            MovieList = _dbConnector.Query("SELECT * FROM movies");
+            MovieList = _dbConnector.Query("SELECT* FROM movies");
             return MovieList;
         }
 

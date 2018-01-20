@@ -34,3 +34,19 @@ button {
     border-radius: 2px;
     background-color: green;
 }
+
+#movies {
+    display: inline-block;
+    position: relative;
+    width: auto;
+    margin: auto;
+}
+
+#movies > p {
+    text-align: center;
+    padding: 5px 10px;
+    margin: 10px 0;
+    border: solid 3px black;
+    background-color: slategray;
+    color: aliceblue;
+}
