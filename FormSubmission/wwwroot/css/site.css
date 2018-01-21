@@ -1,0 +1,26 @@
+/*Write all of your CSS here*/
+h1 {
+    text-align: center;
+}
+
+.form-row {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 70%;
+    height: 40px;
+    text-align: center;
+}
+
+label {
+    width: 150px;
+}
+
+a {
+    padding: 5px 10px;
+    margin: 10px;
+    background-color: darkslategray;
+    color: aliceblue;
+    border: solid 3px lightslategray;
+    border-radius: 3px;
+}
