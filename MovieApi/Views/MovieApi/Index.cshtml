@@ -1,40 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="~/css/index.css" />
-        <script
-            src="https://code.jquery.com/jquery-3.2.1.js"
-            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-            crossorigin="anonymous">
-        </script>
-        <title>Movie Api Index</title>
-    </head>
-    <body>
-        <h1>This is the Movie Api Page</h1>
-        <div class="container">
-            <h1>Movie Lookup:</h1>
-            <form action="search" method="POST">
-                <div class="form-container">
-                    <div class="input-row">
-                        <label>Search for a movie:</label><input type="text" name="movie">
-                    </div>
-                    <div>
-                        <input type=submit Value="Search">
-                        <input >
-                    </div>
-                </div>
-            </form>
-            <p>Movie results will go in place of colors below</p>
-            @foreach (var color in @ViewBag.colors) {
-                <div class="results-row">
-                    @color.Key = @color.Value
-                </div>
-            }
-
+@{
+    ViewData["Title"] = "Movie API";
+}
+<h1>This is the Movie Api Page</h1>
+<div class="container">
+    <h1>Movie Lookup:</h1>
+    <form id="movie-form" action="search" method="POST">
+        <div class="form-container">
+            <div class="input-row">
+                <label>Search for a movie:</label><input type="text" id="movie" name="movie">
+            </div>
+            <div>
+                <button id="search-button">Search</button>
+            </div>
         </div>
-        
-    </body>
-</html>
+    </form>
+
+    <div id="movies">Movies</div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        var $movies = $("#movies");
+        var $movie = $("#movie");
+        function GetMovies() {
+            $.ajax({
+                type: "GET",
+                url: "/getmovies",
+                success: function(movies) {
+                    $.each(movies, function(i, movie) {
+                        $movies.append("<p>" + movie.title + "&nbsp; &nbsp;     Rating: " + movie.vote_average + "&nbsp; &nbsp;     Released:  " + moment(movie.release_date).format("MMM D YYYY") + "</p>");
+                    });
+                },
+                error: function() {
+                    alert("error loading movies");
+                }
+            });
+        }
+
+        GetMovies();
+
+        $("#search-button").click=( function() {
+            $.ajax({
+                type: "POST",
+                url: "/search",
+                data: $movie,
+                success: function(newMovie) {
+                    $movies.append("<p>" + newMovie.title + "     Rating: " + newMovie.vote_average + "     Released:  " + newMovie.release_date + "</p>");
+                },
+                error: function() {
+                    alert("error saving movie");
+                }
+            });                   
+            return false;
+        });
+    });
+</script>
