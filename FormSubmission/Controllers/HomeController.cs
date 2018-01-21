@@ -28,7 +28,8 @@ namespace FormSubmission.Controllers
                 Password = password
             };
             TryValidateModel(NewUser);
-            // ViewBag.errors = ModelState.Values;
+            ViewBag.errors = ModelState.Values;
+            ViewBag.sanitytest = "Successfully registered!";
             return View("success");
         }
     }
