@@ -30,18 +30,22 @@ namespace FormSubmission.Controllers
             };
             TryValidateModel(NewUser);
 
-            List<string> myStringList = new List<string>();
+            if (!ModelState.IsValid) {
+                List<string> myStringList = new List<string>();
 
-            foreach(var errorCollection in ModelState.Values) {
-                foreach( var errorMessageCollection in errorCollection.Errors) {
-                    myStringList.Add(errorMessageCollection.ErrorMessage);
+                foreach(var errorCollection in ModelState.Values) {
+                    foreach( var errorMessageCollection in errorCollection.Errors) {
+                        myStringList.Add(errorMessageCollection.ErrorMessage);
+                    }
                 }
-            }
-            
-            ViewBag.errors = myStringList;
-            Console.WriteLine(ViewBag.errors);
 
-            return View("index");
+                ViewBag.errors = myStringList;
+                Console.WriteLine(ViewBag.errors);
+
+                return View("index");
+            }
+
+            return View("success");
         }
     }
 }
