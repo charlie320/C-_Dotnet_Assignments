@@ -12,6 +12,7 @@ namespace FormSubmission.Controllers
         // GET: /Home/
         [HttpGet]
         [Route("")]
+        [Route("index")]
         public IActionResult Index()
         {
             return View();
@@ -28,9 +29,19 @@ namespace FormSubmission.Controllers
                 Password = password
             };
             TryValidateModel(NewUser);
-            ViewBag.errors = ModelState.Values;
-            ViewBag.sanitytest = "Successfully registered!";
-            return View("success");
+
+            List<string> myStringList = new List<string>();
+
+            foreach(var errorCollection in ModelState.Values) {
+                foreach( var errorMessageCollection in errorCollection.Errors) {
+                    myStringList.Add(errorMessageCollection.ErrorMessage);
+                }
+            }
+            
+            ViewBag.errors = myStringList;
+            Console.WriteLine(ViewBag.errors);
+
+            return View("index");
         }
     }
 }

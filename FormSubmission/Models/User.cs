@@ -3,17 +3,17 @@ using System.ComponentModel.DataAnnotations;
 namespace FormSubmission.Models
 
 {
-    public class User {
+    public class User : BaseEntity {
         [Required]
         [MinLength(2, ErrorMessage = "First name must be at least 2 characters long")]
         public string FirstName {get; set;}
 
         [Required]
-        [MinLength(2, ErrorMessage = "Last name must me at least 2 characters long")]
+        [MinLength(2, ErrorMessage = "Last name must be at least 2 characters long")]
         public string LastName {get; set;}
         
         [Required]
-        [Range(13,110, ErrorMessage = "Age must at least 13 years old.")]
+        [Range(13,125, ErrorMessage = "Age must at least 13 years old.")]
         public int Age {get; set;}
 
         [Required]
