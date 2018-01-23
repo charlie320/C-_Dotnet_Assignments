@@ -15,37 +15,18 @@ namespace FormSubmission.Controllers
         [Route("index")]
         public IActionResult Index()
         {
-            return View();
+            return View("Register");
         }
 
         [HttpPost]
         [Route("")]
-        public IActionResult Submitform(string first_name, string last_name, int age, string email, string password) {
-            User NewUser = new User {
-                FirstName = first_name,
-                LastName = last_name,
-                Age = age,
-                EmailAddress = email,
-                Password = password
-            };
-            TryValidateModel(NewUser);
+        public IActionResult Register(User user) {
 
-            if (!ModelState.IsValid) {
-                List<string> myStringList = new List<string>();
-
-                foreach(var errorCollection in ModelState.Values) {
-                    foreach( var errorMessageCollection in errorCollection.Errors) {
-                        myStringList.Add(errorMessageCollection.ErrorMessage);
-                    }
-                }
-
-                ViewBag.errors = myStringList;
-                Console.WriteLine(ViewBag.errors);
-
-                return View("index");
+            if (ModelState.IsValid) {
+                return View("success");
             }
-
-            return View("success");
+            
+            return View(user);
         }
     }
 }
