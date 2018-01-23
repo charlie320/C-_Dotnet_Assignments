@@ -1,0 +1,68 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model LoginReg.Models.User
+
+<div id=container>
+    <div id="div-row">
+        <div class="div-column">
+            <h1>Registration</h1>
+            <form id="user-info" asp-controller="User" asp-action="Register" method="POST">
+                <div>
+                    <label asp-for="FirstName"></label>
+                    <input asp-for="FirstName">
+                </div>
+
+                <div>
+                    <label asp-for="LastName"></label>
+                    <input asp-for="LastName">
+                </div>
+
+                <div>
+                    <label asp-for="EmailAddress"></label>
+                    <input asp-for="EmailAddress">
+                </div>
+
+                <div>
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password">
+                </div>
+                <div>
+                    <label asp-for="ConfirmPassword"></label>
+                    <input asp-for="ConfirmPassword">
+                </div>
+                <div>
+                    <input class="submit-button" type="submit" Value="Submit">
+                </div>
+            </form>
+        </div>
+        <div class="div-column">
+            <h1>Login</h1>
+            <form action="login" method="POST">
+                <div>
+                    <label>Email Address:</label>
+                    <input name="EmailAddress">
+                </div>
+                <div>
+                    <label>Password:</label>
+                    <input name="Password" type="password">
+                </div>
+                <div>
+                    <input class="submit-button" type="submit" Value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div asp-validation-summary="All">
+    
+</div>
+<div>
+    @{
+        if(@ViewBag.error != null) {
+            <p>@ViewBag.error</p>
+        }
+    }
+</div>

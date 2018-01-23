@@ -1,7 +1,7 @@
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace LayoutTutorial
+namespace LoginReg
 {
     public class Program
     {

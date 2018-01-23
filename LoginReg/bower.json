@@ -1,5 +1,5 @@
 {
-  "name": "LayoutTutorial",
+  "name": "LoginReg",
   "private": true,
   "dependencies": {
     "bootstrap" : "3.3.6",
