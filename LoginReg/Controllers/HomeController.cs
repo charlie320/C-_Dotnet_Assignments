@@ -23,13 +23,12 @@ namespace LoginReg.Controllers
         [Route("index")]
         public IActionResult Index()
         {
-            // List<Dictionary<string, object>> AllUsers = DbConnector.Query("SELECT * FROM users");
-            return View("register");
+            return View("index");
         }
 
         [HttpPost]
         [Route("")]
-        public IActionResult Register(User user) {
+        public IActionResult Index(User user) {
             if(ModelState.IsValid) {
                 _dbConnector.Create(user.FirstName, user.LastName, user.EmailAddress, user.Password);
                 return View("success");
@@ -41,6 +40,7 @@ namespace LoginReg.Controllers
         [Route("login")]
         public IActionResult Login(string emailAddress, string password) {
             List<Dictionary<string, object>>passwordCheck = _dbConnector.Query($"SELECT Password FROM users WHERE(email = \"{emailAddress}\")");
+
             if (ModelState.IsValid) {
                 foreach(var pass in passwordCheck) {
                     foreach(var word in pass) {
@@ -50,8 +50,8 @@ namespace LoginReg.Controllers
                     }
                 }
             }
-            ViewBag.error = "User email and/or password not found";
-            return View("register");
+            ViewBag.error = "The username and/or password are invalid.";
+            return View("index");
         }
     }
 }

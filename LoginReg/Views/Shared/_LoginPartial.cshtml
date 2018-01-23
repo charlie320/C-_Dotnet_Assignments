@@ -1,0 +1,27 @@
+@using LoginReg.Models
+@model LoginReg.Models.User
+
+<div class="div-column">
+    <h1>Login</h1>
+    <form asp-controller="Home" asp-action="Login" method="POST">
+        <div>
+            <label asp-for="EmailAddress"></label>
+            <input asp-for="EmailAddress">
+        </div>
+        <div>
+            <label asp-for="Password"></label>
+            <input asp-for="Password">
+        </div>
+        <div>
+            <input class="submit-button" type="submit" Value="Submit">
+        </div>
+    </form>
+</div>
+
+<div>
+    @{
+        if(@ViewBag.error != null) {
+            <p>@ViewBag.error</p>
+        }
+    }
+</div>

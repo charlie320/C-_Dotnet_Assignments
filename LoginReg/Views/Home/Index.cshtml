@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using LoginReg.Models
+@model LoginReg.Models.User
+
+<div id=container>
+    <div id="div-row">
+        <div class="div-column">
+            @Html.Partial("_RegistrationPartial")
+        </div>
+        <div class="div-column">
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>
