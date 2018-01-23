@@ -6883,7 +6883,7 @@
       ]
     },
     "Microsoft.Extensions.Options.ConfigurationExtensions/2.0.0": {
-      "sha512": "Y/lGICwO27fCkQRK3tZseVzFjZaxfGmui990E67sB4MuiPzdJHnJDS/BeYWrHShSSBgCl4KyKRx4ux686fftPg==",
+      "sha512": "R7UH5Drlyruhbo1vlX7X+lewRUWGknC4+awmbhfbok5qYVK8SWDyxst8fERHoYfIo7hhCKqXdGpq4d4nywnoWw==",
       "type": "package",
       "path": "microsoft.extensions.options.configurationextensions/2.0.0",
       "files": [
@@ -9336,7 +9336,7 @@
       ]
     },
     "System.Diagnostics.TraceSource/4.0.0": {
-      "sha512": "6WVCczFZKXwpWpzd/iJkYnsmWTSFFiU24Xx/YdHXBcu+nFI/ehTgeqdJQFbtRPzbrO3KtRNjvkhtj4t5/WwWsA==",
+      "sha512": "B9xwS+ktq3Mvr8Q4FQku8Sqiz4UzVzHJiXDOCf6pIwATpb2xtE+OOIiYsHXGjB9/pQtcaeXXPO0TPChah+arng==",
       "type": "package",
       "path": "system.diagnostics.tracesource/4.0.0",
       "files": [
@@ -9966,7 +9966,7 @@
       ]
     },
     "System.IO.Pipes/4.0.0": {
-      "sha512": "L9QVhk8hIEix5KNA0kW58Ha+Y1dNGqqqIhAaJkhcGCWeQzUmN0njzI7SG/XAazpMecboOdFFlH3pH/qbwXLJAg==",
+      "sha512": "aMUyC2397DtHq/rVZyxFspFYFRUfAPLP95rwNMRrTgIXzWLwLM3b3tlL1F7jcZ4DVf9tBMRJdFDRiBYmnTr97w==",
       "type": "package",
       "path": "system.io.pipes/4.0.0",
       "files": [
