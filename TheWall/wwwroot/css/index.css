@@ -1,0 +1,31 @@
+a {
+    padding: 5px 10px;
+    margin: 5px 10px;
+    background-color: darkslategray;
+    color: azure;
+    display: inline-block;
+    position: relative;
+    vertical-align: bottom;
+}
+
+button {
+    padding: 5px 10px;
+    margin: 5px 10px;
+    background-color: darkslategray;
+    color: azure;
+    display: inline-block;
+    position: relative;
+    vertical-align: bottom;
+}
+
+a:hover {
+    color: darkslategray;
+    text-decoration: none;
+    background-color: lightslategray;
+}
+
+nav {
+    height: 50px;
+    background-color: slategray;
+    width: 90%;
+}

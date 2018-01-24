@@ -1,0 +1,30 @@
+@using TheWall.Models
+@model TheWall.Models.User
+
+<link rel="stylesheet" type="text/css" href="~/css/register.css">
+
+<div class="div-column">
+    <h1>Login</h1>
+    <form asp-controller="Home" asp-action="Login" method="POST">
+        <div>
+            <label asp-for="EmailAddress"></label>
+            <input asp-for="EmailAddress">
+        </div>
+        <div>
+            <label asp-for="Password"></label>
+            <input asp-for="Password">
+        </div>
+        <div>
+            <input class="submit-button" type="submit" Value="Submit">
+        </div>
+    </form>
+</div>
+
+<div>
+    @{
+        if(@ViewBag.error != null) {
+            <p>@ViewBag.error</p>
+            <a href="index">Cancel</a>
+        }
+    }
+</div>
