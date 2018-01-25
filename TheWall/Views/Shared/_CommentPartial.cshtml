@@ -1,0 +1,29 @@
+@using TheWall.Models
+@model TheWall.Models.Comment
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+        asp-fallback-src="~/lib/jquery/dist/jquery.js"
+        asp-fallback-test="window.jQuery">
+</script>
+
+<link rel="stylesheet" type="text/css" href="~/css/dashboard.css">
+
+@{
+    <form id="comment-form" asp-controller="Comment" asp-action="Comments" method="POST">
+        <div>
+            <textarea id="comment-text" asp-for="CommentText"></textarea>
+        </div>
+        <div>
+            <input class="submit-button" type="submit" Value="Post a Comment">        
+        </div>
+    </form>
+}
+
+<div>
+    @{
+        if(@ViewBag.error != null) {
+            <p>@ViewBag.error</p>
+            <a href="index">Cancel</a>
+        }
+    }
+</div>

@@ -4,6 +4,9 @@ namespace TheWall.Models
 
 {
     public class User : BaseEntity {
+
+        public int Id { get; set; }
+        
         [Required]
         [MinLength(2, ErrorMessage = "First name must be at least 2 characters long")]
         [Display(Name = "First Name:")]

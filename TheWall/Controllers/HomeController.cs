@@ -30,6 +30,8 @@ namespace TheWall.Controllers
         [HttpGet]
         [Route("registerform")]
         public IActionResult RegisterForm() {
+
+
             return PartialView("~/Views/Shared/_Registration.cshtml");
         }
 
@@ -38,10 +40,18 @@ namespace TheWall.Controllers
         [Route("index")]
         public IActionResult Index(User user) {
             Console.WriteLine(user.FirstName);
-            if (!ModelState.IsValid) {
-                ViewBag.IsValid = false;
+            if (ModelState.IsValid) {
+                _dbConnector.Create(user.FirstName, user.LastName, user.EmailAddress, user.Password);
+                return RedirectToAction("RegSuccess");
             }
+            ViewBag.IsValid = false;
             return View("_Registration", user);
+        }
+
+        [HttpGet]
+        [Route("regsuccess")]
+        public IActionResult RegSuccess() {
+            return View("_RegSuccess");
         }
 
         [HttpGet]
@@ -52,8 +62,17 @@ namespace TheWall.Controllers
 
         [HttpPost]
         [Route("login")]
-        public IActionResult Login(User user) {
-
+        public IActionResult Login(string emailAddress, string password) {
+        List<Dictionary<string, object>>passwordCheck = _dbConnector.Query($"SELECT Password FROM users WHERE(email = \"{emailAddress}\")");       
+            if (ModelState.IsValid) {
+                foreach(var pass in passwordCheck) {
+                    foreach(var word in pass) {
+                        if (word.Value.ToString() == password) {
+                            return RedirectToAction("Dashboard", "Message");
+                        }
+                    }
+                }
+            }
             ViewBag.error = "Email address and/or password are invalid.";
             return View("_Login");
         }
