@@ -63,11 +63,13 @@ namespace TheWall.Controllers
         [HttpPost]
         [Route("login")]
         public IActionResult Login(string emailAddress, string password) {
-        List<Dictionary<string, object>>passwordCheck = _dbConnector.Query($"SELECT Password FROM users WHERE(email = \"{emailAddress}\")");       
+        List<Dictionary<string, object>>passwordCheck = _dbConnector.Query($"SELECT id, Password FROM users WHERE(email = \"{emailAddress}\")");       
             if (ModelState.IsValid) {
                 foreach(var pass in passwordCheck) {
                     foreach(var word in pass) {
+                        Console.WriteLine(word);
                         if (word.Value.ToString() == password) {
+
                             return RedirectToAction("Dashboard", "Message");
                         }
                     }
