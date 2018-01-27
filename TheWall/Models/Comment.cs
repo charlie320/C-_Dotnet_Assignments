@@ -11,8 +11,8 @@ namespace TheWall.Models
         [Display(Name = "Comment:")]
         public string CommentText {get; set;}
 
-        public User User {get; set;}
+        public int MessageId {get; set;}
         
-        public Message Message {get; set;}
+        public int UserId {get; set;}
     }
 }

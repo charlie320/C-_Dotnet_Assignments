@@ -31,7 +31,7 @@ namespace TheWall.Controllers
         [Route("comments")]
         public IActionResult Comments(Comment comment) {
             int user_id = 3;  // Temporary hard-coded user_id
-            int message_id = 1; // Temporary hard-coded message_id
+            int message_id = 2; // Temporary hard-coded message_id
             if (ModelState.IsValid) {
                 _dbConnector.CreateComment(comment.CommentText, user_id, message_id);
                 return RedirectToAction("Dashboard", "Message");
