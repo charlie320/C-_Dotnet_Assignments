@@ -78,7 +78,7 @@ namespace DbConnection
 
         public List<Dictionary<string,object>> CreateMessage(string messageText, int userId) {
             // string queryString = "INSERT INTO messages (message, created_at, updated_at, users_id) VALUES (\"" + messageText + "\", NOW(), NOW(), \"" + userId + "\")";
-            string queryString = $"INSERT INTO messages (message, created_at, updated_at, users_id) VALUES ('{messageText}', NOW(), NOW(), {userId})";            
+            string queryString = $"INSERT INTO messages (message, created_at, updated_at, users_id) VALUES (\"{messageText}\", NOW(), NOW(), {userId})";            
             
             Console.WriteLine(queryString);
             using(IDbConnection dbConnection = Connection)
@@ -107,7 +107,7 @@ namespace DbConnection
 
         public List<Dictionary<string,object>> CreateComment(string commentText, int userId, int messageId) {
             // string queryString = "INSERT INTO messages (message, created_at, updated_at, users_id) VALUES (\"" + messageText + "\", NOW(), NOW(), \"" + userId + "\")";
-            string queryString = $"INSERT INTO comments (comment, created_at, updated_at, messages_id, users_id) VALUES ('{commentText}', NOW(), NOW(), {messageId}, {userId})";            
+            string queryString = $"INSERT INTO comments (comment, created_at, updated_at, messages_id, users_id) VALUES (\"{commentText}\", NOW(), NOW(), {messageId}, {userId})";            
             
             Console.WriteLine(queryString);
             using(IDbConnection dbConnection = Connection)

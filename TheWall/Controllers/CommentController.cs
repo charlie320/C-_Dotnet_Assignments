@@ -30,7 +30,7 @@ namespace TheWall.Controllers
         [HttpPost]
         [Route("comments")]
         public IActionResult Comments(Comment comment) {
-            int user_id = 3;  // Temporary hard-coded user_id
+            int user_id = (int)HttpContext.Session.GetInt32("UserId");
             int message_id = 2; // Temporary hard-coded message_id
             if (ModelState.IsValid) {
                 _dbConnector.CreateComment(comment.CommentText, user_id, message_id);

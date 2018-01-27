@@ -22,16 +22,12 @@ namespace TheWall.Controllers
         [Route("index")]
         public IActionResult Index()
         {
-            // List<Dictionary<string, object>> AllUsers = _dbConnector.Query("SELECT * FROM users");
-
             return View("Index");
         }
 
         [HttpGet]
         [Route("registerform")]
         public IActionResult RegisterForm() {
-
-
             return PartialView("~/Views/Shared/_Registration.cshtml");
         }
 
@@ -63,20 +59,41 @@ namespace TheWall.Controllers
         [HttpPost]
         [Route("login")]
         public IActionResult Login(string emailAddress, string password) {
-        List<Dictionary<string, object>>passwordCheck = _dbConnector.Query($"SELECT id, Password FROM users WHERE(email = \"{emailAddress}\")");       
+        List<Dictionary<string, object>>passwordCheck = _dbConnector.Query($"SELECT id, password FROM users WHERE(email = \"{emailAddress}\")");       
             if (ModelState.IsValid) {
-                foreach(var pass in passwordCheck) {
-                    foreach(var word in pass) {
-                        Console.WriteLine(word);
-                        if (word.Value.ToString() == password) {
+                // foreach(var pass in passwordCheck) {
+                //     foreach(var word in pass) {
+                //         Console.WriteLine(word);
+                //         if (word.Value.ToString() == password) {
+                //             return RedirectToAction("Dashboard", "Message");
+                //         }
+                //     }
+                // }
 
-                            return RedirectToAction("Dashboard", "Message");
-                        }
-                    }
+                if ((string)passwordCheck[0]["password"] == password) {
+
+                    HttpContext.Session.SetString("UserEmail", $"{emailAddress}");
+                    int user_id = (int)passwordCheck[0]["id"];
+                    HttpContext.Session.SetInt32("UserId", user_id);
+
+                    Console.WriteLine("Session user_email:  " + HttpContext.Session.GetString("UserEmail"));
+                    Console.WriteLine("Session id:  " + HttpContext.Session.GetInt32("UserId"));
+
+                    return RedirectToAction("Dashboard", "Message");
                 }
             }
             ViewBag.error = "Email address and/or password are invalid.";
             return View("_Login");
+        }
+
+        [HttpGet]
+        [Route("logout")]
+        public IActionResult Logout() {
+            HttpContext.Session.Clear();
+            Console.WriteLine("Logout email:  " + HttpContext.Session.GetString("UserEmail"));
+            Console.WriteLine("Logout id:  " + HttpContext.Session.GetString("UserId"));
+
+            return RedirectToAction("Index");
         }
     }
 }

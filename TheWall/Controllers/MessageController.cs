@@ -29,19 +29,17 @@ namespace TheWall.Controllers
                 foreach (var comment in AllComments) {
                     Console.WriteLine(comment["comment"]);
                 }
-                // Console.WriteLine(AllComments);
             }
             ViewBag.messages = AllMessages;
-            // Console.WriteLine("Hello");
-            // Console.WriteLine(ViewBag.messages);
             return View("Dashboard");
         }
 
         [HttpPost]
         [Route("dashboard")]
         public IActionResult Dashboard(Message message) {
-            Console.WriteLine("Inside the Dashboard method.");
-            int user_id = 3;  // Temporary hard-coded user_id
+            int user_id = (int)HttpContext.Session.GetInt32("UserId");
+            Console.WriteLine("dashboard post user_id = " + user_id);
+
             if (ModelState.IsValid) {
                 _dbConnector.CreateMessage(message.MessageText, user_id);
                 return RedirectToAction("Dashboard");
