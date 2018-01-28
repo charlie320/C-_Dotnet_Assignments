@@ -17,7 +17,7 @@
 <a href="logout">Log Out (Back to main page)</a>
 
 <div id="message-form-div">
-    <h3>Post a message:</h3>
+    <h4>Post a message:</h4>
 
     <form id="message-form" asp-controller="Message" asp-action="Dashboard" method="POST">
         <div>
@@ -31,8 +31,18 @@
 
 @{
     foreach(var message in @ViewBag.messages) {
-        <p>@message["message"]</p>
+        <p id="message-text">@message["message"]</p>
+
+        foreach(var comment in @ViewBag.comments) {
+            if (@message["id"] == @comment["messages_id"]) {
+                <p id="comment-text">@comment["comment"]</p>
+            }
+        }
+        <h5>Post a Comment:</h5>
+        <form action="comments" method="POST">
+            <textarea id="comment-text" name="CommentText"></textarea>
+            <input type="hidden" name="MessageId" Value=@message["id"]>
+            <input type="submit" Value="Post a Comment">
+        </form>
     }
-    <h4>Post a Comment</h4>
-    @Html.Partial("_CommentPartial");
 }

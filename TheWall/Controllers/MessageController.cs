@@ -23,14 +23,9 @@ namespace TheWall.Controllers
         public IActionResult Dashboard()
         {
             List<Dictionary<string, object>> AllMessages = _dbConnector.Query("SELECT * FROM messages");
-            foreach (var message in AllMessages) {
-                Console.WriteLine(message["id"]);
-                List<Dictionary<string,object>> AllComments = _dbConnector.Query($"SELECT * FROM comments WHERE messages_id = {message["id"]}");
-                foreach (var comment in AllComments) {
-                    Console.WriteLine(comment["comment"]);
-                }
-            }
+            List<Dictionary<string, object>> AllComments = _dbConnector.Query("SELECT * FROM comments");
             ViewBag.messages = AllMessages;
+            ViewBag.comments = AllComments;
             return View("Dashboard");
         }
 

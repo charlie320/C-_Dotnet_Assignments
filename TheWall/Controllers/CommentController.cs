@@ -29,11 +29,14 @@ namespace TheWall.Controllers
 
         [HttpPost]
         [Route("comments")]
+        // public IActionResult Comments(Comment comment, int message_id) {
         public IActionResult Comments(Comment comment) {
             int user_id = (int)HttpContext.Session.GetInt32("UserId");
-            int message_id = 2; // Temporary hard-coded message_id
+            Console.WriteLine("Comment:  " + comment.CommentText);
+            Console.WriteLine("Message ID:  " + comment.MessageId);
+            Console.WriteLine("User ID:  " + user_id); 
             if (ModelState.IsValid) {
-                _dbConnector.CreateComment(comment.CommentText, user_id, message_id);
+                _dbConnector.CreateComment(comment.CommentText, user_id, comment.MessageId);
                 return RedirectToAction("Dashboard", "Message");
             }
             ViewBag.error = "Please correct errors and resubmit.";
