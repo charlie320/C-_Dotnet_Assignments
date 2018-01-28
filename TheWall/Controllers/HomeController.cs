@@ -59,7 +59,7 @@ namespace TheWall.Controllers
         [HttpPost]
         [Route("login")]
         public IActionResult Login(string emailAddress, string password) {
-        List<Dictionary<string, object>>passwordCheck = _dbConnector.Query($"SELECT id, password FROM users WHERE(email = \"{emailAddress}\")");       
+        List<Dictionary<string,object>>passwordCheck = _dbConnector.Query($"SELECT id, password FROM users WHERE(email = \"{emailAddress}\")");       
             if (ModelState.IsValid) {
 
                 if ((string)passwordCheck[0]["password"] == password) {
@@ -67,7 +67,6 @@ namespace TheWall.Controllers
                     HttpContext.Session.SetString("UserEmail", $"{emailAddress}");
                     int user_id = (int)passwordCheck[0]["id"];
                     HttpContext.Session.SetInt32("UserId", user_id);
-
                     Console.WriteLine("Session user_email:  " + HttpContext.Session.GetString("UserEmail"));
                     Console.WriteLine("Session id:  " + HttpContext.Session.GetInt32("UserId"));
 

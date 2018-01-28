@@ -21,7 +21,7 @@
 
     <form id="message-form" asp-controller="Message" asp-action="Dashboard" method="POST">
         <div>
-            <textarea id="message-text" asp-for="MessageText"></textarea>            
+            <textarea id="message-textarea" asp-for="MessageText"></textarea>            
         </div>
         <div>
             <input class="submit-button" type="submit" Value="Post a Message">            
@@ -31,7 +31,18 @@
 
 @{
     foreach(var message in @ViewBag.messages) {
+
+        foreach (var user in @ViewBag.users) {
+            if (@message["users_id"] == @user["id"]) {
+                <p id="message-author">@user["first_name"] @user["last_name"] - @message["created_at"].ToString("ddd, MMM d, yyyy h:m tt")</p>
+            }
+        }
+
         <p id="message-text">@message["message"]</p>
+        
+        if (@message["users_id"] == @ViewBag.userId) {
+            <a href="#">Delete</a>
+        }
 
         foreach(var comment in @ViewBag.comments) {
             if (@message["id"] == @comment["messages_id"]) {
@@ -40,9 +51,14 @@
         }
         <h5>Post a Comment:</h5>
         <form action="comments" method="POST">
-            <textarea id="comment-text" name="CommentText"></textarea>
-            <input type="hidden" name="MessageId" Value=@message["id"]>
-            <input type="submit" Value="Post a Comment">
+            <div>
+                <textarea id="comment-textarea" name="CommentText"></textarea>
+                <input type="hidden" name="MessageId" Value=@message["id"]>
+            </div>
+            <div>
+                <input type="submit" Value="Post a Comment">
+            </div>
+
         </form>
     }
 }

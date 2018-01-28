@@ -22,11 +22,20 @@ namespace TheWall.Controllers
         [Route("dashboard")]
         public IActionResult Dashboard()
         {
+            if (HttpContext.Session.GetInt32("UserId") != null) {
             List<Dictionary<string, object>> AllMessages = _dbConnector.Query("SELECT * FROM messages");
             List<Dictionary<string, object>> AllComments = _dbConnector.Query("SELECT * FROM comments");
+            List<Dictionary<string, object>> AllUsers = _dbConnector.Query("SELECT * FROM users");
+            Console.WriteLine(AllUsers[0]["first_name"]);
             ViewBag.messages = AllMessages;
             ViewBag.comments = AllComments;
+            ViewBag.users = AllUsers;
+            ViewBag.userId = HttpContext.Session.GetInt32("UserId");
+
             return View("Dashboard");
+            } else {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         [HttpPost]
@@ -44,9 +53,16 @@ namespace TheWall.Controllers
         }
 
         [HttpGet]
-        [Route("msgsuccess")]
+        [Route("msgsuccess/")]
         public IActionResult MsgSuccess() {
             return RedirectToAction("Dashboard");
+        }
+
+        [HttpPost]
+        [Route("removemessage/{id}")]
+        public IActionResult RemoveMessage() {
+            return View("removesuccess");
+            
         }
     }
 }

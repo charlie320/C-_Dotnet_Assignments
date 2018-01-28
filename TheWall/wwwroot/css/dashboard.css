@@ -3,5 +3,29 @@
 }
 
 #message-text {
-    font-size: 1.5em;
+    display: inline-block;
+    padding: 10px 0 0 0;
+    font-size: 1.2em;
+}
+
+#message-author {
+    display: inline-block;
+    width: 75%;
+    padding: 10px 0 0 0;
+    font-size: 1.2em;
+    border-top: 3px solid black;
+}
+
+#message-textarea {
+    width: 75%;
+    height: 75px;
+}
+
+#comment-textarea {
+    width: 55%;
+    height: 75px;
+}
+
+input[type=submit] {
+    margin: 5px 0 20px 5px;
 }
