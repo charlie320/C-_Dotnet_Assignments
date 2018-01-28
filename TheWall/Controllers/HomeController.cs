@@ -61,14 +61,6 @@ namespace TheWall.Controllers
         public IActionResult Login(string emailAddress, string password) {
         List<Dictionary<string, object>>passwordCheck = _dbConnector.Query($"SELECT id, password FROM users WHERE(email = \"{emailAddress}\")");       
             if (ModelState.IsValid) {
-                // foreach(var pass in passwordCheck) {
-                //     foreach(var word in pass) {
-                //         Console.WriteLine(word);
-                //         if (word.Value.ToString() == password) {
-                //             return RedirectToAction("Dashboard", "Message");
-                //         }
-                //     }
-                // }
 
                 if ((string)passwordCheck[0]["password"] == password) {
 
