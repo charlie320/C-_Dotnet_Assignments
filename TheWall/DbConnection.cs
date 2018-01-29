@@ -105,20 +105,6 @@ namespace DbConnection
             }
         }
 
-        // public string DeleteMessage(int messageId) {
-        //     string queryString = $"DELETE FROM messages WHERE (\"id\" = {messageId})";
-        //     Console.WriteLine($"Inside the DeleteMessage method and messageId = {messageId}");
-        //     using(IDbConnection dbConnection = Connection)
-        //     {
-        //             IDbCommand command = dbConnection.CreateCommand();
-        //             command.CommandText = queryString;
-        //             dbConnection.Open();
-        //             Console.WriteLine($"CommandText = {command.CommandText}");
-        //             command.ExecuteNonQuery();
-        //     }
-        //     return $"Successfully deleted message {messageId}";
-        // }
-
         public List<Dictionary<string,object>> CreateComment(string commentText, int userId, int messageId) {
             string queryString = $"INSERT INTO comments (comment, created_at, updated_at, messages_id, users_id) VALUES (\"{commentText}\", NOW(), NOW(), {messageId}, {userId})";            
             

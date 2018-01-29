@@ -29,7 +29,6 @@ namespace TheWall.Controllers
 
         [HttpPost]
         [Route("comments")]
-        // public IActionResult Comments(Comment comment, int message_id) {
         public IActionResult Comments(Comment comment) {
             int user_id = (int)HttpContext.Session.GetInt32("UserId");
             Console.WriteLine("Comment:  " + comment.CommentText);

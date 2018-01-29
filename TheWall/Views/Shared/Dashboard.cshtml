@@ -43,7 +43,7 @@
         if (@message["users_id"] == @ViewBag.userId) {
             <form asp-controller="Message" asp-action="RemoveMessage" method="POST">
                 <input type="hidden" name="Id" Value=@message["id"]>
-                <input type="submit" Value="Delete-nonfunctioning">
+                <input type="submit" Value="Delete">
             </form>
         }
 

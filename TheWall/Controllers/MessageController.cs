@@ -15,7 +15,7 @@ namespace TheWall.Controllers
         private readonly DbConnector _dbConnector;
 
         public MessageController(DbConnector connect) {
-            _dbConnector = connect;
+            _dbConnector = connect;           
         }      
 
         [HttpGet]
@@ -62,9 +62,20 @@ namespace TheWall.Controllers
         [Route("removemessage")]
         public IActionResult RemoveMessage(Message message) {
             Console.WriteLine($"Message Id number {message.Id} received in the RemoveMessage method.");
-            // string DeleteMessage = _dbConnector.DeleteMessage(message.Id);
-            // Console.WriteLine(DeleteMessage);
-            return View("removesuccess");
+            string DeleteComment = $"DELETE FROM comments WHERE messages_id = {message.Id}";
+            _dbConnector.Execute(DeleteComment);
+            string DeleteMessage = $"DELETE FROM messages WHERE id = {message.Id}";
+            _dbConnector.Execute(DeleteMessage);
+            return RedirectToAction("Dashboard");
+        }
+
+        [HttpPost]
+        [Route("removecomment")]
+        public IActionResult RemoveComment(Comment comment) {
+            Console.WriteLine($"Comment Id number {comment.Id} received in the RemoveComment method.");
+            string DeleteComment = $"DELETE FROM comments WHERE id = {comment.Id}";
+            _dbConnector.Execute(DeleteComment);
+            return RedirectToAction("Dashboard");
         }
     }
 }
