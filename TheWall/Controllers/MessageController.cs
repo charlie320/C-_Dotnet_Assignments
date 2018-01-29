@@ -59,10 +59,12 @@ namespace TheWall.Controllers
         }
 
         [HttpPost]
-        [Route("removemessage/{id}")]
-        public IActionResult RemoveMessage() {
+        [Route("removemessage")]
+        public IActionResult RemoveMessage(Message message) {
+            Console.WriteLine($"Message Id number {message.Id} received in the RemoveMessage method.");
+            // string DeleteMessage = _dbConnector.DeleteMessage(message.Id);
+            // Console.WriteLine(DeleteMessage);
             return View("removesuccess");
-            
         }
     }
 }
