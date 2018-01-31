@@ -43,16 +43,19 @@ namespace LostInWoods.Controllers
         [HttpGet]
         [Route("showtrail/{id}")]
         public IActionResult ShowTrail(int id) {
-
+            ViewBag.trail = trailFactory.FindByID(id);
             return View("showtrail", id);
         }
 
         [HttpPost]
         [Route("createtrail")]
         public IActionResult CreateTrail(Trail trail) {
-            Console.WriteLine("Inside the CreateTrail method.");
-            trailFactory.Add(trail);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid) {
+                trailFactory.Add(trail);
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("NewTrail");
+
         }
 
         // public List<Dictionary<string,object>> CreateTrail(string trail_name, string description, double trail_length, int elevation_change, double longitude, char longitude_hemisphere, double latitude, char latitude_hemisphere){

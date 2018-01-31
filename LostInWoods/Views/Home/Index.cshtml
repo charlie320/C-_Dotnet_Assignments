@@ -15,7 +15,7 @@
     @{
         foreach(var trail in @ViewBag.trails) {
             <tr>
-                <td class="trails-col">@trail.TrailName</td>
+                <td class="trails-col"><a href="/showtrail/@trail.Id">@trail.TrailName</a></td>
                 <td class="length-col">@trail.TrailLength miles</td>
                 <td class="elevation-col">@trail.ElevationChange feet</td>
             </tr>
