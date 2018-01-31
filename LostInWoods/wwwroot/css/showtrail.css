@@ -1,0 +1,47 @@
+#container {
+    width: 100%;
+    max-width: 950px;
+    padding: 10px;
+    border-top: 8px solid forestgreen;
+}
+
+.row {
+    width: 100%;
+    text-align: center;
+}
+
+.col {
+    display: inline-block;
+    vertical-align: top;
+    width: 47%;
+    height: 100%;
+    padding: 10px;
+}
+
+#trail-name-text {
+    text-decoration-line: underline;
+}
+
+#home-link {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    font-size: .8em;
+    margin: 28px 0;
+    padding: 4px 8px 0px 8px;
+    border-radius: 3px;
+    border: 2px solid rgb(10, 12, 14);
+    width: 115px;
+    height: 20px;
+    background-color: darkslategray;
+}
+
+#home-link:hover {
+    background-color: lightslategray;
+}
+
+#googleMap {
+    width: 100%;
+    height: 400px;
+}

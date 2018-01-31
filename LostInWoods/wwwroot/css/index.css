@@ -1,3 +1,10 @@
+#border-div {
+    border-top: solid 10px forestgreen;
+    margin: 10px 0;
+    width: 75%;
+    max-width: 700px;
+}
+
 table {
     border-collapse: collapse;
 }

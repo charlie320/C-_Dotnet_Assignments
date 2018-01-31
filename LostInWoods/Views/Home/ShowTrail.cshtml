@@ -1,14 +1,54 @@
+@{
+    ViewData["Title"] = "Trail Page";
+}
 
+<link rel="stylesheet" href="~/css/showtrail.css" />
 
-<h1>@ViewBag.trail.TrailName</h1>
-<h2>Description</h2>
-<p>@ViewBag.trail.Description</p>
-<h2>Trail Length</h2>
-<p>@ViewBag.trail.TrailLength</p>
-<h2>Elevation Change</h2>
-<p>@ViewBag.trail.ElevationChange</p>
-<h2>Longitude</h2>
-<p>@ViewBag.trail.Longitude<span> @ViewBag.trail.LongitudeHemisphere</span></p>
-<h2>Latitude</h2>
-<p>@ViewBag.trail.Latitude<span> @ViewBag.trail.LatitudeHemisphere</span></p>
-<a href="/index">Go Home</a>
+<div id="container">
+    <div class="row">
+
+        <div class="col">
+            <h1 id="trail-name-text"><em>@ViewBag.trail.TrailName</em></h1>
+            <h3>Description</h3>
+            <p>@ViewBag.trail.Description</p>
+            <h3>Trail Length</h3>
+            <p>@ViewBag.trail.TrailLength miles</p>
+            <h3>Elevation Change</h3>
+            <p>@ViewBag.trail.ElevationChange feet</p>
+            <h3>Longitude</h3>
+            <p>@ViewBag.trail.Longitude</p>
+            <h3>Latitude</h3>
+            <p>@ViewBag.trail.Latitude</p>
+        </div>
+
+        <div class="col">
+            <a href="/index" id="home-link">Back to Home Page</a>
+            <div id="googleMap"></div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    var latitude = "@ViewBag.trail.Latitude";
+    var longitude = "@ViewBag.trail.Longitude";
+
+    function myMap()
+    {
+    //myCenter=new google.maps.LatLng(32.9029, 96.5639);
+    myCenter=new google.maps.LatLng(latitude, (longitude));
+    var mapOptions= {
+        center:myCenter,
+        zoom:12, scrollwheel: false, draggable: false,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+    };
+    var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+
+    var marker = new google.maps.Marker({
+        position: myCenter,
+    });
+    marker.setMap(map);
+    }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8nT4t5PPhWqjyRpWOHyXFCh5LAdvsavY&callback=myMap"></script>

@@ -26,24 +26,12 @@ namespace LostInWoods.Factory
             }
         }
 
-        // private string connectionString;
-        // public TrailFactory()
-        // {
-        //     connectionString = "server=localhost;userid=root;password=root;port=8889;database=LostWoodsDB;SslMode=None";
-        // }
-        // internal IDbConnection Connection
-        // {
-        //     get {
-        //         return new MySqlConnection(connectionString);
-        //     }
-        // }
-
         //USERFACTORY CLASS DEFINITION
  
         public void Add(Trail item)
         {
             using (IDbConnection dbConnection = Connection) {
-                string query =  "INSERT INTO trails (TrailName, Description, TrailLength, ElevationChange, Longitude, LongitudeHemisphere, Latitude, LatitudeHemisphere, created_at, updated_at) VALUES (@TrailName, @Description, @TrailLength, @ElevationChange, @Longitude, @LongitudeHemisphere, @Latitude, @LatitudeHemisphere, NOW(), NOW())";
+                string query =  "INSERT INTO trails (TrailName, Description, TrailLength, ElevationChange, Longitude, Latitude, created_at, updated_at) VALUES (@TrailName, @Description, @TrailLength, @ElevationChange, @Longitude, @Latitude, NOW(), NOW())";
                 dbConnection.Open();
                 dbConnection.Execute(query, item);
             }

@@ -30,15 +30,8 @@ namespace LostInWoods.Models
         public double Longitude { get; set; }
 
         [Required]
-        [Display(Name = "Longitude Hemisphere:")]
-        public char LongitudeHemisphere { get; set; }
-
-        [Required]
         [Display(Name = "Latitude:")]
         public double Latitude { get; set; }
 
-        [Required]
-        [Display(Name = "Latitude Hemisphere:")]
-        public char LatitudeHemisphere { get; set; }
     }
 }
