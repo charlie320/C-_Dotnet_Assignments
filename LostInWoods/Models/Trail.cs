@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 namespace LostInWoods.Models
 
 {
-    public class User : BaseEntity {
+    public class Trail : BaseEntity {
 
         public int Id { get; set; }
         

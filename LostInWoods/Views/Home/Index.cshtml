@@ -1,4 +1,25 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+
+<link rel="stylesheet" href="~/css/index.css" />
+
 <h2>List of Local Hiking Trails</h2>
+
+<table id="all-trails">
+    <tr id="table-header">
+        <th class="trails-col">Trail Name</th>
+        <th class="length-col">Trail Length</th>
+        <th class="elevation-col">Elevation Change</th>
+    </tr>
+    @{
+        foreach(var trail in @ViewBag.trails) {
+            <tr>
+                <td class="trails-col">@trail.TrailName</td>
+                <td class="length-col">@trail.TrailLength miles</td>
+                <td class="elevation-col">@trail.ElevationChange feet</td>
+            </tr>
+        }
+    }
+</table>
+<a id="new-trail-link" href="newtrail">Add a new Trail</a>

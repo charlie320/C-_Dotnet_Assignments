@@ -1,0 +1,116 @@
+#wrapper {
+    margin: 15px 15px;
+    width: 80%;
+    max-width: 800px;
+}
+
+#back-link {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    font-size: .8em;
+    margin: 10px;
+    padding: 4px 8px 0px 8px;
+    border-radius: 3px;
+    border: 2px solid slategray;
+    width: 115px;
+    height: 20px;
+    background-color: darkslategray;
+}
+
+#back-link:hover {
+    background-color: lightslategray;
+}
+
+#page-header {
+    display: inline-block;
+}
+
+a {
+    position: relative;
+    float: right;
+}
+
+#new-trail-form {
+    width: 90%;
+    max-width: 800px;
+}
+
+label {
+    display: inline-block;
+    width: 35%;
+}
+
+input {
+    width: 30%;
+    border: 2px solid black;
+}
+
+#trail-name-input {
+    width: 50%;
+}
+
+#discription-label {
+    vertical-align: top;
+}
+
+textarea {
+    width: 50%;
+    height: 4em;
+    border: 2px solid black;
+}
+
+.input-div {
+    margin: 15px 10px;
+    width: inherit;
+}
+
+/* *************************************************** */
+#long-lat-section {
+    width: 100%;
+    margin: 10px;
+}
+
+#long-lat-label {
+    width: 31%;
+    vertical-align: top;
+}
+.long-lat-div {
+    display: inline-block;
+    width: 28%;
+}
+
+.long-lat-input {
+    width: 40%;
+    vertical-align: top;
+}
+
+.long-lat-radio-div {
+    display: inline-block;
+    width: 50%;
+    font-size: .9em;
+}
+
+input[type="radio"] {
+    width: .75em;
+}
+
+input[type="submit"] {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    font-size: .8em;
+    margin: 10px;
+    padding: 7px 8px 8px 8px;
+    border-radius: 3px;
+    border: 2px solid slategray;
+    width: 125px;
+    height: 33px;
+    background-color: darkslategray;
+}
+
+input[type="submit"]:hover {
+    background-color: lightslategray;
+}

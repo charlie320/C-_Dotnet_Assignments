@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Hosting;
 using DbConnection;
 using MySqlOpt;
+using LostInWoods.Factory;
 
 namespace LostInWoods
 {
@@ -29,7 +30,8 @@ namespace LostInWoods
             services.AddMvc();
             services.AddSession();
             services.Configure<MySqlOptions>(Configuration.GetSection("DBInfo"));
-            services.AddScoped<DbConnector>();
+            // services.AddScoped<DbConnector>();
+            services.AddScoped<TrailFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

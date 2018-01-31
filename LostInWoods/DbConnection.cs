@@ -48,17 +48,17 @@ namespace DbConnection
             }
         }
         //This method run a query and returns no values
-        public void Execute(string queryString)
-        {
-            using (IDbConnection dbConnection = Connection)
-            {
-                using(IDbCommand command = dbConnection.CreateCommand())
-                {
-                    command.CommandText = queryString;
-                    dbConnection.Open();
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
+        // public void Execute(string queryString)
+        // {
+        //     using (IDbConnection dbConnection = Connection)
+        //     {
+        //         using(IDbCommand command = dbConnection.CreateCommand())
+        //         {
+        //             command.CommandText = queryString;
+        //             dbConnection.Open();
+        //             command.ExecuteNonQuery();
+        //         }
+        //     }
+        // }
     }
 }

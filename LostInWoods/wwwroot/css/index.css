@@ -1,0 +1,41 @@
+table {
+    border-collapse: collapse;
+}
+
+td {
+    padding: 3px 5px;
+}
+
+#all-trails {
+    border: 3px solid black;
+    width: 75%;
+    max-width: 700px;
+}
+
+.trails-col {
+    width: 40%;
+    border-right: 3px solid black;
+}
+
+.length-col {
+    width: 25%;
+    border-right: 3px solid black;    
+}
+
+#new-trail-link {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    margin: 10px;
+    padding: 12px 10px 0px 10px;
+    border-radius: 3px;
+    border: 2px solid slategray;
+    width: 150px;
+    height: 33px;
+    background-color: darkslategray;
+}
+
+#new-trail-link:hover {
+    background-color: lightslategray;
+}

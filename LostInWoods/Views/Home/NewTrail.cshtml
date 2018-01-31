@@ -1,0 +1,56 @@
+@model LostInWoods.Models.Trail
+
+<link rel="stylesheet" href="~/css/newtrail.css" />
+
+<div id="wrapper">
+    <div>
+        <h2 id="page-header"><em>Add a New Trail</em></h2>
+        <a id="back-link" href="index">Back to Home Page</a>
+    </div>
+
+    <form id="new-trail-form" action="CreateTrail" method="POST">
+        <div class="input-div">
+            <label asp-for="TrailName">Trail Name:  </label>
+            <input asp-for="TrailName" id="trail-name-input">
+        </div>
+        <div class="input-div">
+            <label asp-for="Description" id="discription-label">Description:  </label>
+            <textarea asp-for="Description"></textarea>
+        </div>
+        <div class="input-div">
+            <label asp-for="TrailLength">Trail Length:  </label>
+            <input asp-for="TrailLength">
+        </div>
+        <div class="input-div">
+            <label asp-for="ElevationChange">Elevation Change:  </label>
+            <input asp-for="ElevationChange">
+        </div>
+
+        <section id="long-lat-section">
+            <label id="long-lat-label">Longitude &amp Latitude: </label>
+
+            <div class="long-lat-div">
+
+                <input asp-for="Longitude" class="long-lat-input">
+                <div class="long-lat-radio-div">
+                    <input asp-for="LongitudeHemisphere" type="radio" value="E">East<br>
+                    <input asp-for="LongitudeHemisphere" type="radio" value="W">West
+                </div>
+            </div>
+
+            <div class="long-lat-div">
+
+                <input asp-for="Latitude" class="long-lat-input">
+                <div class="long-lat-radio-div">
+                    <input asp-for="LatitudeHemisphere" type="radio" value="N">North<br>
+                    <input asp-for="LatitudeHemisphere" type="radio" value="S">South
+                </div>
+            </div>
+
+        </section>
+        <div>
+            <input type="submit" value="Submit Trail">
+        </div>
+    </form>
+</div>
+
