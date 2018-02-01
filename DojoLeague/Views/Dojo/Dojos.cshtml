@@ -1,0 +1,47 @@
+@{
+    ViewData["Title"] = "Dojo Page";
+}
+
+<link rel="stylesheet" href="~/css/dojo.css" />
+
+<div id="wrapper">
+    <div class="row">
+
+        <div class="col" id="col-left">
+            <h1>All Dojos</h1>
+            <table id="dojo-list-table">
+                <tr>
+                    <th>Dojo Name</th>
+                </tr>
+                <tr>
+                    <td>Some Dojo</td>
+                </tr>
+                    <td>Some Dojo</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col" id="col-right">
+            <h1>Register A Dojo</h1>
+            <form id="dojo-form">
+                <div class="input-div">
+                    <label class="input-label">Dojo Name</label>
+                    <input class="input">
+                </div>
+                <div class="input-div">
+                    <label class="input-label">Dojo Location</label>
+                    <input class="input">
+                </div>
+                <div class="input-div">
+                    <label class="input-label">Additional Dojo Information</label>
+                    <textarea id="information"></textarea>
+                </div>
+                <div id="submit-div">
+                    <input type="submit" value="Add">
+                </div>
+            </form>
+
+        </div>
+        
+    </div>
+</div>

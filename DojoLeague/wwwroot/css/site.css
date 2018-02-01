@@ -1,0 +1,28 @@
+/*Write all of your CSS here*/
+
+nav {
+    height: 40px;
+    width: 70%;
+    max-width: 900px;
+    background-color: steelblue;
+    border: 2px solid slategrey;
+    padding: 10px;
+}
+
+nav > a {
+    display: inline-block;
+    text-decoration-line: none;
+    position: relative;
+    top: 4px;
+    padding: 5px 15px;
+    margin: 0 15px 0 0;
+    background-color: #633;
+    color: white;
+    border: 2px solid #955;
+}
+
+nav > a:hover {
+    background-color: #911;
+    color: rgb(184, 152, 152);
+    border: 2px solid #988;
+}

@@ -1,0 +1,91 @@
+h1 {
+    margin-left: 10px;
+}
+
+#wrapper {
+    width: 90%;
+    max-width: 900px;
+}
+
+.row {
+    width: 100%;
+    text-align: center;
+}
+
+.col {
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    width: 49%;
+    background-color: aliceblue;
+}
+
+#name-input {
+    display: inline-block;
+    width: 30%;
+}
+
+#ninja-list-table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 3px solid #000;
+}
+
+#ninja-list-table th, td {
+    text-align: left;
+    padding: 5px 10px;
+    border-right: 3px solid #000;
+}
+
+#ninja-list-table tr:nth-child(even) {
+    background-color: #eee;
+}
+
+#ninja-list-table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+#ninja-list-table th {
+    background-color: #000;
+    color: #fff;
+}
+
+.input-div {
+    padding: 5px 10px;
+    width: 100%;
+}
+
+.input-label {
+    display: inline-block;
+    vertical-align: top;
+    width: 35%;
+}
+
+#description {
+    width: 45%;
+    height: 4em;
+}
+
+form {
+    width: 100%;
+}
+
+#submit-div {
+    height: 50;
+}
+
+input[type="submit"] {
+    margin: 10px;
+    width: 100px;
+    height: 30px;
+    background-color: #ddd;
+    border: 2px solid #777;
+    color: #222;
+    font-size: 1em;
+    font-family: serif;
+}
+
+input[type="submit"]:hover {
+    background-color: #999;
+    color: #000;
+}

@@ -1,0 +1,64 @@
+@{
+    ViewData["Title"] = "Ninja Page";
+}
+
+@model DojoLeague.Models.Ninja
+
+<link rel="stylesheet" href="~/css/ninja.css" />
+
+<div id="wrapper">
+    <div class="row">
+
+        <div class="col">
+            <h1>Registered Ninjas</h1>
+            <table id="ninja-list-table">
+                <tr>
+                    <th>Ninja Name</th>
+                    <th>Home Dojo</th>
+                </tr>
+                <tr>
+                    <td>Some Ninja</td>
+                    <td>Some Dojo</td>
+                </tr>
+                <tr>
+                    <td>Some Ninja</td>
+                    <td>Some Dojo</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col">
+            <h1>Register A Ninja</h1>
+            <form id="ninja-form" action"" method="POST">
+                <div class="input-div">
+                    <label asp-for="Name" class="input-label">Ninja Name</label>
+                    <input asp-for="Name" id="name-input">
+                </div>
+                <div class="input-div">
+                    <label asp-for="Level" class="input-label">Ninja Level (1-10)</label>
+                    <select asp-for="Level" id="level-input">
+                        @{
+                            for (int i = 1; i <=10; i++) {
+                                <option value=@i>@i</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="input-div">
+                    <label asp-for="AssignedDojo" class="input-label">Assigned Dojo</label>
+                    <select asp-for="AssignedDojo" id="dojo-input">
+                        <option value="Rogue">Rogue</option>
+                    </select>
+                </div>
+                <div class="input-div">
+                    <label asp-for="Description" class="input-label">Optional Description</label>
+                    <textarea asp-for="Description" id="description"></textarea>
+                </div>
+                <div id="submit-div">
+                    <input type="submit" value="Add">
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
