@@ -15,9 +15,6 @@ namespace DojoLeague.Controllers
 
         public NinjaController(NinjaFactory connect)
         {
-            //Instantiate a UserFactory object that is immutable (READONLY)
-            //This establishes the initial DB connection for us.
-            // NinjaFactory ninjaFactory = new NinjaFactory();
             ninjaFactory = connect;
         }
         // GET: /Home/
