@@ -57,7 +57,8 @@ namespace DojoLeague.Factory
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<Ninja>("SELECT * FROM ninjas WHERE ninjas.dojos_id is NULL");
+                // return dbConnection.Query<Ninja>("SELECT * FROM ninjas WHERE ninjas.dojos_id is NULL");
+                return dbConnection.Query<Ninja>("SELECT * FROM ninjas WHERE ninjas.dojos_id = 0");
             }
         }
 
@@ -74,6 +75,14 @@ namespace DojoLeague.Factory
                 string query = $"SELECT * FROM dojos WHERE(dojo_id={id})";
                 dbConnection.Open();
                 return dbConnection.Query<Dojo>(query, new{dojo_id = id}).FirstOrDefault();
+            }
+        }
+
+        public IEnumerable<Dojo> FindAllDojos() {
+            using (IDbConnection dbConnection = Connection)
+            {
+                dbConnection.Open();
+                return dbConnection.Query<Dojo>("SELECT * FROM dojos");
             }
         }
 

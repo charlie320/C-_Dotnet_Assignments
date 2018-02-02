@@ -76,13 +76,14 @@ namespace DojoLeague.Factory
             using (IDbConnection dbConnection = Connection)
                 {
                     dbConnection.Open();
-                    return dbConnection.Query<Ninja>("SELECT * FROM ninjas WHERE dojos_id IS NULL");
+                    return dbConnection.Query<Ninja>("SELECT * FROM ninjas WHERE dojos_id = 0");
                 }
         }
 
         public void BanishNinja(int id){
             using (IDbConnection dbConnection = Connection){
-                var query = $"UPDATE ninjas SET dojos_id = NULL WHERE ninjas.ninja_id = {id}";
+                // var query = $"UPDATE ninjas SET dojos_id = NULL WHERE ninjas.ninja_id = {id}";
+                var query = $"UPDATE ninjas SET dojos_id = 0 WHERE ninjas.ninja_id = {id}";                
                 dbConnection.Open();
                 dbConnection.Execute(query);
             }

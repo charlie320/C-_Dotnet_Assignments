@@ -21,7 +21,6 @@ namespace DojoLeague.Models
         [Display(Name = "Description:")]
         public string Description {get; set;}
 
-        [Required]
         [Display(Name = "Dojo ID:")]
         public int dojos_id {get; set;}
 
@@ -32,5 +31,6 @@ namespace DojoLeague.Models
         public Dojo dojo { get; set;}
         
         public string DojoName {get; set;}
+
     }
 }

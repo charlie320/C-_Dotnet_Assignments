@@ -4,6 +4,8 @@
 
 <link rel="stylesheet" href="~/css/dojo.css" />
 
+@model DojoLeague.Models.Dojo
+
 <div id="wrapper">
     <div class="row">
 
@@ -15,9 +17,11 @@
                 </tr>
                 @{
                     foreach (var dojo in @ViewBag.dojos) {
-                        <tr>
-                            <td><a href="/dojos/@dojo.dojo_id">@dojo.DojoName</a></td>
-                        </tr>
+                        if (@dojo.DojoName != "Rogue") {
+                            <tr>
+                                <td><a href="/dojos/@dojo.dojo_id">@dojo.DojoName</a></td>
+                            </tr>
+                        }
                     }
                 }
             </table>
@@ -25,18 +29,18 @@
 
         <div class="col" id="col-right">
             <h1>Register A Dojo</h1>
-            <form id="dojo-form">
+            <form id="dojo-form" action="AddDojo" method="POST">
                 <div class="input-div">
-                    <label class="input-label">Dojo Name</label>
-                    <input class="input">
+                    <label asp-for="DojoName" class="input-label">Dojo Name</label>
+                    <input asp-for="DojoName" class="input">
                 </div>
                 <div class="input-div">
-                    <label class="input-label">Dojo Location</label>
-                    <input class="input">
+                    <label asp-for="DojoLocation" class="input-label">Dojo Location</label>
+                    <input asp-for="DojoLocation" class="input">
                 </div>
                 <div class="input-div">
-                    <label class="input-label">Additional Dojo Information</label>
-                    <textarea id="information"></textarea>
+                    <label asp-for="DojoInfo" class="input-label">Additional Dojo Information</label>
+                    <textarea asp-for="DojoInfo" id="information"></textarea>
                 </div>
                 <div id="submit-div">
                     <input type="submit" value="Add">

@@ -18,10 +18,12 @@
                 </tr>
                 @{
                     foreach (var ninja in @ViewBag.ninjas) {
-                        <tr>
-                            <td><a href="ninjas/@ninja.ninja_id">@ninja.Name</a></td>
-                            <td>@ninja.DojoName</td>
-                        </tr>
+                        if (@ninja.dojos_id != 0) {
+                            <tr>
+                                <td><a href="ninjas/@ninja.ninja_id">@ninja.Name</a></td>
+                                <td>@ninja.DojoName</td>
+                            </tr>
+                        }
                     }
                     foreach (var ninja in @ViewBag.rogueNinjas) {
                         <tr>
@@ -35,7 +37,7 @@
 
         <div class="col">
             <h1>Register A Ninja</h1>
-            <form id="ninja-form" action"" method="POST">
+            <form id="ninja-form" action="AddNinja" method="POST">
                 <div class="input-div">
                     <label asp-for="Name" class="input-label">Ninja Name</label>
                     <input asp-for="Name" id="name-input">
@@ -53,7 +55,11 @@
                 <div class="input-div">
                     <label asp-for="dojos_id" class="input-label">Assigned Dojo</label>
                     <select asp-for="dojos_id" id="dojo-input">
-                        <option value="null">Rogue</option>
+                        @{
+                            foreach (var dojo in @ViewBag.allDojos) {
+                                <option value=@dojo.dojo_id>@dojo.DojoName</option>
+                            }
+                        }
                     </select>
                 </div>
                 <div class="input-div">

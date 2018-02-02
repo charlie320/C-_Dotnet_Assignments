@@ -27,6 +27,17 @@ namespace DojoLeague.Controllers
             return View("dojos");
         }
 
+        [HttpPost]
+        [Route("adddojo")]
+        public IActionResult AddDojo(Dojo dojo) {
+            if (ModelState.IsValid) {
+                dojoFactory.Add(dojo);
+                return RedirectToAction("Dojos");
+            }
+            ViewBag.dojos = dojoFactory.FindAll();
+            return View("Dojos");
+        }
+
         [HttpGet]
         [Route("dojos/{id}")]
         public IActionResult DojoShow(int id) {
