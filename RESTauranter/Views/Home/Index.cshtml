@@ -6,4 +6,42 @@
 
 @model RESTauranter.Models.Review
 
-<h1>Write a Review</h1>
+<div id="container">
+    <div id="row">
+        <h1>Write a New Review</h1>
+        <form id="review-form" action="CreateReview" method="POST">
+            <div id="col-left">
+                    <div class="input-div">
+                        <label asp-for="ReviewerName">Reviewer Name:</label>
+                        <input asp-for="ReviewerName" class="form-input">
+                    </div>
+                    <div class="input-div">
+                        <label asp-for="RestaurantName">Restaurant Name:</label>
+                        <input asp-for="RestaurantName" class="form-input">
+                    </div>
+                    <div class="input-div">
+                        <label asp-for="ReviewText">Review:</label>
+                        <textarea asp-for="ReviewText" id="review-text"></textarea>
+                    </div>
+                    <div class="input-div">
+                        <label asp-for="VisitDate">Date of Visit:</label>
+                        <input asp-for="VisitDate" type="date" id="visit-date">
+                    </div>
+                        <input type="submit" Value="Submit">
+            </div>
+            <div id="col-right">
+                <label asp-for="Stars">Stars:</label>
+                <select asp-for="Stars" id="stars-select">
+                    @{
+                        for (int i = 1; i <= 5; i++) {
+                            <option value=@i>@i</option>
+                        }
+                    }
+                </select>
+            </div>
+        </form>
+    </div>
+
+
+
+</div>

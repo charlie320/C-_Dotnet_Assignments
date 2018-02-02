@@ -4,6 +4,40 @@
 
 <link rel="stylesheet" href="~/css/reviews.css" />
 
-@model RESTauranter.Model.Review
+@model RESTauranter.Models.Review
 
-<h1>Review Page</h1>
+<div id="page-div">
+    <h1 id="page-heading"><em>Recent Reviews</em></h1>
+    @{
+        foreach (var review in @ViewBag.reviews) {
+            string starPlural = "";
+            if (@review.Stars > 1) {
+                starPlural = "stars";
+            } else {
+                starPlural = "star";
+            }
+            <div id="review-div">
+                <h3>Review for @review.RestaurantName:&nbsp;&nbsp;&nbsp;&nbsp;@review.Stars @starPlural</h3>
+                <h4>Reviewer:  @review.ReviewerName:&nbsp;&nbsp;&nbsp;&nbsp;@review.VisitDate.ToString("MMM dd, yyyy")</h4>
+                <p>@review.ReviewText</p>
+                <div>
+                    <label>Helpful reviews: &nbsp;&nbsp;@review.Helpful</label>
+                    <label>Unhelpful reviews: &nbsp;&nbsp;@review.Unhelpful</label>
+                </div>
+
+                <div>
+                    <label>Was this review helpful&quest;</label>
+                    <form action="reviews/@review.review_id/helpful/yes">
+                        <button class="yesno" type="submit">Yes</button>
+                    </form>
+                    <form action="reviews/@review.review_id/helpful/no">
+                        <button class="yesno" type="submit">No</button>
+                    </form>
+                </div>
+
+
+            </div>
+        }
+    }
+
+</div>

@@ -4,6 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Hosting;
+using MySQL.Data.EntityFrameworkCore;
+using MySQL.Data.EntityFrameworkCore.Extensions;
+using RESTauranter.Models;
 using DbConnection;
 
 namespace RESTauranter
@@ -30,6 +33,7 @@ namespace RESTauranter
             services.AddSession();
             services.Configure<MySqlOptions>(Configuration.GetSection("DBInfo"));
             services.AddScoped<DbConnector>();
+            services.AddDbContext<RESTauranterContext>(options => options.UseMySQL(Configuration["DBInfo:ConnectionString"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

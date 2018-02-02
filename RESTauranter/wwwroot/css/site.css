@@ -1,1 +1,44 @@
 /*Write all of your CSS here*/
+
+header {
+    width: 90%;
+    max-width: 900px;
+    height: 75px;
+    background-color: rgb(75, 41, 22);
+    color: white;
+    font-family: sans-serif;
+    padding: 10px;
+    margin: 5px;
+}
+
+nav {
+    width: 90%;
+    max-width: 900px;
+    height: 30px;
+    background-color: rgb(120, 50, 35);
+    margin: 5px;
+    padding: 10px;
+}
+
+nav > a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: rgb(88, 39, 24);
+    color: #eee;
+    border: 2px solid rgb(161, 118, 118);
+    border-radius: 3px;
+    vertical-align: middle;
+    text-decoration-line: none;
+    font-family: sans-serif;
+}
+
+nav > a:hover {
+    background-color: rgb(209, 149, 149);
+    color: #eee;
+
+}
+
+.container {
+    width: 95%;
+    max-width: 900px;
+}
