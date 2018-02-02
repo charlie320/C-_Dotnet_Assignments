@@ -6,7 +6,7 @@ namespace DojoLeague.Models
 {
     public class Ninja : BaseEntity {
         [Key]
-        public int id { get; set; }
+        public int ninja_id { get; set; }
 
         [Required]
         [MinLength(2, ErrorMessage = "Name must be at least 2 characters long")]
@@ -18,18 +18,19 @@ namespace DojoLeague.Models
         [Display(Name = "Level:")]
         public int Level {get; set;}
 
-        [Required]
-        [Display(Name = "Assigned Dojo:")]
-        public string AssignedDojo {get; set;}
-
         [Display(Name = "Description:")]
         public string Description {get; set;}
+
+        [Required]
+        [Display(Name = "Dojo ID:")]
+        public int dojos_id {get; set;}
 
         public DateTime created_at {get; set;}
 
         public DateTime updated_at {get; set;}
 
         public Dojo dojo { get; set;}
-
+        
+        public string DojoName {get; set;}
     }
 }

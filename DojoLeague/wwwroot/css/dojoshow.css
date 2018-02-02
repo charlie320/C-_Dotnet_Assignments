@@ -1,0 +1,40 @@
+.container {
+    max-width: 900px;
+    width: 70%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.row {
+    width: 140%;
+}
+.col {
+    padding: 5px;
+    display: inline-block;
+    width: 47%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 3px solid #000;
+}
+
+th, td {
+    text-align: left;
+    padding: 5px 10px;
+    border-right: 3px solid #000;
+}
+
+table tr:nth-child(even) {
+    background-color: #eee;
+}
+
+table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+th {
+    background-color: #555;
+    color: #fff;
+}

@@ -16,14 +16,20 @@
                     <th>Ninja Name</th>
                     <th>Home Dojo</th>
                 </tr>
-                <tr>
-                    <td>Some Ninja</td>
-                    <td>Some Dojo</td>
-                </tr>
-                <tr>
-                    <td>Some Ninja</td>
-                    <td>Some Dojo</td>
-                </tr>
+                @{
+                    foreach (var ninja in @ViewBag.ninjas) {
+                        <tr>
+                            <td><a href="ninjas/@ninja.ninja_id">@ninja.Name</a></td>
+                            <td>@ninja.DojoName</td>
+                        </tr>
+                    }
+                    foreach (var ninja in @ViewBag.rogueNinjas) {
+                        <tr>
+                            <td><a href="ninjas/@ninja.ninja_id">@ninja.Name</a></td>
+                            <td>Rogue</td>
+                        </tr>
+                    }
+                }
             </table>
         </div>
 
@@ -45,9 +51,9 @@
                     </select>
                 </div>
                 <div class="input-div">
-                    <label asp-for="AssignedDojo" class="input-label">Assigned Dojo</label>
-                    <select asp-for="AssignedDojo" id="dojo-input">
-                        <option value="Rogue">Rogue</option>
+                    <label asp-for="dojos_id" class="input-label">Assigned Dojo</label>
+                    <select asp-for="dojos_id" id="dojo-input">
+                        <option value="null">Rogue</option>
                     </select>
                 </div>
                 <div class="input-div">

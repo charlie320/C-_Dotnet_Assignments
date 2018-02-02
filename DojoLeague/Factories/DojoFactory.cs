@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Dapper;
@@ -41,12 +42,57 @@ namespace DojoLeague.Factory
                 return dbConnection.Query<Dojo>("SELECT * FROM dojos");
             }
         }
-        public Dojo FindByID(int id)
+
+        public Dojo FindByID(int Id)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<Dojo>("SELECT * FROM dojos WHERE id = @Id", new { Id = id }).FirstOrDefault();
+                return dbConnection.Query<Dojo>("SELECT * FROM dojos WHERE dojo_id = @Id", new { dojo_id = Id }).FirstOrDefault();
+            }
+        }
+
+        public Dojo FindByIdWithNinjas(int id)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                dbConnection.Open();
+                var query =
+                @"
+                SELECT * FROM dojos WHERE dojo_id = @id;
+                SELECT * FROM ninjas WHERE dojos_id = @id;
+                ";
+        
+                using (var multi = dbConnection.QueryMultiple(query, new {Id = id}))
+                {
+                    var dojo = multi.Read<Dojo>().Single();
+                    dojo.ninjas = multi.Read<Ninja>().ToList();
+                    return dojo;
+                }
+            }
+        }
+
+        public IEnumerable<Ninja> GetRogueNinjas() {
+            using (IDbConnection dbConnection = Connection)
+                {
+                    dbConnection.Open();
+                    return dbConnection.Query<Ninja>("SELECT * FROM ninjas WHERE dojos_id IS NULL");
+                }
+        }
+
+        public void BanishNinja(int id){
+            using (IDbConnection dbConnection = Connection){
+                var query = $"UPDATE ninjas SET dojos_id = NULL WHERE ninjas.ninja_id = {id}";
+                dbConnection.Open();
+                dbConnection.Execute(query);
+            }
+        }
+
+        public void RecruitNinja(int dojo_id, int ninja_id){
+            using (IDbConnection dbConnection = Connection){
+                var query = $"UPDATE ninjas SET dojos_id = {dojo_id} WHERE ninjas.ninja_id = {ninja_id}";
+                dbConnection.Open();
+                dbConnection.Execute(query);
             }
         }
     }

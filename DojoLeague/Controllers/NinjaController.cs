@@ -23,8 +23,18 @@ namespace DojoLeague.Controllers
         public IActionResult Ninjas()
         {
             //We can call upon the methods of the userFactory directly now.
-            ViewBag.ninjas = ninjaFactory.FindAll();
+            ViewBag.ninjas = ninjaFactory.FindAllWithDojo();
+            ViewBag.rogueNinjas = ninjaFactory.FindAllWithDojoNull();
             return View("ninjas");
+        }
+
+        [HttpGet]
+        [Route("ninjas/{id}")]
+        public IActionResult NinjaShow(int id) {
+            // ViewBag.ninja_id = id;
+            ViewBag.ninja = ninjaFactory.FindById(id);
+            ViewBag.ninjaDojo = ninjaFactory.FindNinjaDojo(ViewBag.ninja.dojos_id);
+            return View("NinjaShow");
         }
     }
 }

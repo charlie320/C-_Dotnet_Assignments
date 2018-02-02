@@ -13,11 +13,13 @@
                 <tr>
                     <th>Dojo Name</th>
                 </tr>
-                <tr>
-                    <td>Some Dojo</td>
-                </tr>
-                    <td>Some Dojo</td>
-                </tr>
+                @{
+                    foreach (var dojo in @ViewBag.dojos) {
+                        <tr>
+                            <td><a href="/dojos/@dojo.dojo_id">@dojo.DojoName</a></td>
+                        </tr>
+                    }
+                }
             </table>
         </div>
 

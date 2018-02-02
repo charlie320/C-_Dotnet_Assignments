@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Ninja Show Page";
+}
+
+@model DojoLeague.Models.Ninja
+
+<link rel="stylesheet" href="~/css/ninjashow.css" />
+
+<h1>Name:  @ViewBag.ninja.Name</h1>
+
+<h3>Ninja Level - @ViewBag.ninja.Level</h3>
+
+<h3>Description:  @ViewBag.ninja.Description</h3>
+
+@{
+    if (@ViewBag.ninjaDojo != null) {
+        <h3>Current Dojo:  @ViewBag.ninjaDojo.DojoName</h3>
+    }
+}

@@ -15,9 +15,6 @@ namespace DojoLeague.Controllers
 
         public DojoController(DojoFactory connect)
         {
-            //Instantiate a UserFactory object that is immutable (READONLY)
-            //This establishes the initial DB connection for us.
-            // NinjaFactory ninjaFactory = new NinjaFactory();
             dojoFactory = connect;
         }
         // GET: /Home/
@@ -28,6 +25,30 @@ namespace DojoLeague.Controllers
             //We can call upon the methods of the dojoFactory directly now.
             ViewBag.dojos = dojoFactory.FindAll();
             return View("dojos");
+        }
+
+        [HttpGet]
+        [Route("dojos/{id}")]
+        public IActionResult DojoShow(int id) {
+            ViewBag.dojo_id = id;
+            ViewBag.dojoWithNinjas = dojoFactory.FindByIdWithNinjas(id);
+            ViewBag.rogueNinjas = dojoFactory.GetRogueNinjas();
+            return View("DojosShow");
+        }
+
+        [HttpGet]
+        [Route("dojos/{dojo_id}/banish/{ninja_id}")]
+        public IActionResult Banish(int dojo_id, int ninja_id) {
+            dojoFactory.BanishNinja(ninja_id);
+            return RedirectToAction("DojoShow", new {id = dojo_id});
+
+        }
+
+        [HttpGet]
+        [Route("dojos/{dojo_id}/recruit/{ninja_id}")]
+        public IActionResult RecruitNinja(int dojo_id, int ninja_id){
+            dojoFactory.RecruitNinja(dojo_id,ninja_id);
+            return RedirectToAction("DojoShow", new { id = dojo_id});
         }
     }
 }

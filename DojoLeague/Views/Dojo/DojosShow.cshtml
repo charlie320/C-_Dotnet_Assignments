@@ -1,0 +1,51 @@
+@{
+    ViewData["Title"] = "Dojo Show Page";
+}
+
+<link rel="stylesheet" href="~/css/dojoshow.css" />
+
+
+<h1>@ViewBag.dojoWithNinjas.DojoName</h1>
+<h3>Dojo Location - @ViewBag.dojoWithNinjas.DojoLocation</h3>
+<h3>Information - @ViewBag.dojoWithNinjas.DojoInfo</h3>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col">
+            <h2>Current Members</h2>
+            <table>
+                <tr>
+                    <th>Ninja</th>
+                    <th>Action</th>
+                </tr>
+                @{
+                    foreach (var ninja in @ViewBag.dojoWithNinjas.ninjas) {
+                        <tr>
+                            <td>@ninja.Name</td>
+                            <td><a href="/dojos/@ViewBag.dojo_id/banish/@ninja.ninja_id">Banish!</a></td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+
+        <div class="col">
+            <h2>Rogue Members</h2>
+            <table>
+                <tr>
+                    <th>Ninja</th>
+                    <th>Action</th>
+                </tr>
+                @{
+                    foreach (var ninja in @ViewBag.rogueNinjas) {
+                        <tr>
+                            <td>@ninja.Name</td>
+                            <td><a href="/dojos/@ViewBag.dojo_id/recruit/@ninja.ninja_id">Recruit!</a></td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </div>
+</div>
