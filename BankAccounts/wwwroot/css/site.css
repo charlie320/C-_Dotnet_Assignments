@@ -1,0 +1,52 @@
+/*Write all of your CSS here*/
+header {
+    width: 95%;
+    height: 100px;
+    max-width: 900px;
+    background-color: rgb(36, 36, 126);
+    border-radius: 2px;
+}
+
+header > h1 {
+    display: inline-block;
+    line-height: .25em;
+}
+
+header > h2 {
+    line-height: 0;
+}
+
+header > h1, h2 {
+    margin-left: 10px;
+    color: rgb(255, 255, 255);
+}
+
+nav {
+    width: 95%;
+    max-width: 900px;
+    height: 50px;
+    margin: 10px 0 0 0;
+    background-color: rgb(180, 0, 0);
+    border-radius: 2px;
+}
+
+nav > a {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    top: 8px;
+    padding: 5px 10px;
+    margin: 0 0 0 10px;
+    width: 60px;
+    height: 20px;
+    border: 2px solid rgb(122, 28, 28);
+    background-color: white;
+    color: rgb(1, 22, 117);
+    text-decoration-line: none;
+}
+
+nav > a:hover {
+    background-color: rgb(83, 83, 83);
+    color: rgb(255, 255, 255);
+    text-decoration-line: none;
+}
