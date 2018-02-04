@@ -1,4 +1,16 @@
-#container {
+#upper-border {
+    width: 900px;
+    height: 15px;
+    border-bottom: 2px solid rgb(114, 114, 114);
+}
+
+#lower-border {
+    width: 900px;
+    height: 15px;
+    border-bottom: 2px solid rgb(114, 114, 114);
+}
+
+#login-container {
     margin-left: 5px;
 }
 

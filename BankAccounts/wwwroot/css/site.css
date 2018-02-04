@@ -7,13 +7,18 @@ header {
     border-radius: 2px;
 }
 
-header > h1 {
+header {
     display: inline-block;
-    line-height: .25em;
+    width: 900px;
+    height: 100px;
+}
+
+header > h1 {
+    line-height: .75em;
 }
 
 header > h2 {
-    line-height: 0;
+    line-height: .25em;
 }
 
 header > h1, h2 {
@@ -22,7 +27,7 @@ header > h1, h2 {
 }
 
 nav {
-    width: 95%;
+    width: 100%;
     max-width: 900px;
     height: 50px;
     margin: 10px 0 0 0;
