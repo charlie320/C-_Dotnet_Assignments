@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using BankAccounts.Models;
 using DbConnection;
 
@@ -82,6 +83,17 @@ namespace BankAccounts.Controllers
                 _context.SaveChanges();
                 return RedirectToAction("Login");
             }
+
+            // *****One way to extract validation errors*****
+            // foreach (var modelState in ModelState.Values) {
+            //     foreach (ModelError error in modelState.Errors) {
+            //         Console.WriteLine(error.ErrorMessage);
+            //     }
+            // }
+
+            // *****Another way to extract validation errors.  However, Web app will utilize @Http.ValidationSummary() on client side to display errors*****
+            // IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+            // ViewBag.errors = allErrors;
 
             return View("Index");
         }
