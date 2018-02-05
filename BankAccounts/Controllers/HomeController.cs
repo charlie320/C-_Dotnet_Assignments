@@ -42,15 +42,18 @@ namespace BankAccounts.Controllers
 
         [HttpPost]
         [Route("login")]
-        public IActionResult Login(string Email, string Password) {
-            User RetrievedUser = _context.Users.SingleOrDefault(user => user.Email == Email);
-            if (RetrievedUser != null && Password != null) {
+        // public IActionResult Login(string Email, string Password) {
+        public IActionResult Login(User LoginUser) {
+            
+            User RetrievedUser = _context.Users.SingleOrDefault(user => user.Email == LoginUser.Email);
+            if (RetrievedUser != null && LoginUser.Password != null) {
                 var Hasher = new PasswordHasher<User>();
-                if (0 != Hasher.VerifyHashedPassword(RetrievedUser, RetrievedUser.Password, Password)) {
+                if (0 != Hasher.VerifyHashedPassword(RetrievedUser, RetrievedUser.Password, LoginUser.Password)) {
                     HttpContext.Session.SetInt32("CurrentUserId", RetrievedUser.UserId);
                     return RedirectToAction("Account");
                 }
             }
+            ViewBag.error = "Login information is invalid.";
             return View("Login");
         }
 
@@ -105,9 +108,9 @@ namespace BankAccounts.Controllers
                 User RetrievedUser = _context.Users.SingleOrDefault(user => user.UserId == HttpContext.Session.GetInt32("CurrentUserId"));
                 ViewBag.RetrievedUser = RetrievedUser;
 
-                List<Transaction> ReturnedTransactions = _context.Transactions.Where(transaction => transaction.UserId == RetrievedUser.UserId).ToList();
+                List<Transaction> ReturnedTransactions = _context.Transactions.Where(transaction => transaction.UserId == RetrievedUser.UserId).OrderByDescending(t => t.created_at).ToList();
                 ViewBag.ReturnedTransactions = ReturnedTransactions;
-
+                ViewBag.InvalidTransaction = TempData["InvalidTransaction"];
                 return View("Account");
             }
             return RedirectToAction("Login");
@@ -116,6 +119,7 @@ namespace BankAccounts.Controllers
         [HttpPost]
         [Route("createtransaction")]
         public IActionResult CreateTransaction(Transaction transact) {
+            HttpContext.Session.SetString("InvalidTransaction", "");
             if (ModelState.IsValid && HttpContext.Session.GetInt32("CurrentUserId") != null) {
                 Transaction NewTrans = new Transaction {
                     Amount = Convert.ToDouble(transact.Amount),
@@ -123,10 +127,16 @@ namespace BankAccounts.Controllers
                     created_at = DateTime.Now,
                     updated_at = DateTime.Now
                 };
+
+                User RetrievedUser = _context.Users.SingleOrDefault(user => user.UserId == HttpContext.Session.GetInt32("CurrentUserId"));
+                if ((RetrievedUser.AccountBalance + NewTrans.Amount) < 0) {
+                    TempData["InvalidTransaction"] = "Withdrawal exceeds account balance.";
+                    return RedirectToAction("Account");
+                }
+
                 _context.Add(NewTrans);
                 _context.SaveChanges();
 
-                User RetrievedUser = _context.Users.SingleOrDefault(user => user.UserId == HttpContext.Session.GetInt32("CurrentUserId"));
                 List<Transaction> ReturnedValues = _context.Transactions.Where(transaction => transaction.UserId == RetrievedUser.UserId).ToList();
                 int sum = (int)ReturnedValues.Sum(s => s.Amount);
                 RetrievedUser.AccountBalance = sum;

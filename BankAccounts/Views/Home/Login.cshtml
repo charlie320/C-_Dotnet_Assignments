@@ -9,16 +9,18 @@
     <a href="index">Need to register?</a>
     <form action="Login" method="POST">
         <div class="input-div">
-            <label class="input-label">Email Address:</label>
-            <input class="form-input" placeholder="Email Address" name="Email">
+            <label asp-for="Email" class="input-label">Email Address:</label>
+            <input asp-for="Email" class="form-input" placeholder="Email Address" name="Email">
         </div>
         <div class="input-div">
-            <label class="input-label">Password:</label>
-            <input type="password" class="form-input" placeholder="Password" name="Password">
+            <label asp-for="Password" class="input-label">Password:</label>
+            <input asp-for="Password" type="password" class="form-input" placeholder="Password" name="Password">
+        </div>
+        <div>
+            @ViewBag.error
         </div>
         <input type="submit" value="Submit">
     </form>
-
 </div>
 
 <div id="lower-border"></div>
