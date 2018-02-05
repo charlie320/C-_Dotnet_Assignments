@@ -144,7 +144,7 @@ namespace BankAccounts.Controllers
 
                 return RedirectToAction("Account");
             }
-            return View("Account");
+            return RedirectToAction("Account");
         }
     }
 }
