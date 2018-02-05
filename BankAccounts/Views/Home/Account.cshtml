@@ -1,16 +1,18 @@
 <link rel="stylesheet" href="~/css/account.css">
 
+@model BankAccounts.Models.Transaction
+
 <div id="account-header">
-    <h1>Welcome, Username</h1>
+    <h1>Welcome, @ViewBag.RetrievedUser.FirstName</h1>
     <div id="account-balance-div">
         <label>Current Balance:</label>
-        <span>$400.00</span>
+        <span>$ @ViewBag.RetrievedUser.AccountBalance.ToString("0.00")</span>
     </div>
 </div>
 
-<form>
-    <label>Deposit/Withdraw:</label>
-    <input id="dep-wd">
+<form action="CreateTransaction" method="POST">
+    <label asp-for="Amount">Deposit/Withdraw:</label>
+    <input asp-for="Amount" id="dep-wd" name="Amount" type="number">
     <input type="submit" value="Submit">
 </form>
 
@@ -19,12 +21,14 @@
         <th>Amount</th>
         <th>Date</th>
     </tr>
-    <tr>
-        <td>$200.00</td>
-        <td>Jan 23, 2016</td>
-    </tr>
-    <tr>
-        <td>$-200.00</td>
-        <td>Jan 16, 2016</td>
-    </tr>
+
+    @{
+        foreach (var transaction in @ViewBag.ReturnedTransactions) {
+            <tr>
+                <td>$ @transaction.Amount.ToString("0.00")</td>
+                <td>@transaction.created_at.ToString("MMM dd, yyyy")</td>
+            </tr>
+        }
+    }
+
 </table>

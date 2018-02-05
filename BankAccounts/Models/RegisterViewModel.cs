@@ -27,6 +27,7 @@ namespace BankAccounts.Models
         public string Password {get; set;}
 
         [Compare("Password", ErrorMessage = "Password and confirmation must match.")]
+        [Display(Name = "Password Confirmation")]
         public string PasswordConfirmation {get; set;}
         
     }

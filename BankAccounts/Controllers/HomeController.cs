@@ -25,32 +25,104 @@ namespace BankAccounts.Controllers
         [Route("")]
         [Route("index")]
         public IActionResult Index() {
+            HttpContext.Session.Clear();
+            Console.WriteLine(HttpContext.Session);
+            ViewBag.InitSession = HttpContext.Session;
             return View("Index");
         }
 
         [HttpGet]
         [Route("login")]
-        public IActionResult Login(string Email, string PasswordToCheck) {
+        public IActionResult LoginPage() {
+            HttpContext.Session.Clear();
+            ViewBag.InitSession = HttpContext.Session;
             return View("Login");
+        }
+
+        [HttpPost]
+        [Route("login")]
+        public IActionResult Login(string Email, string Password) {
+            User RetrievedUser = _context.Users.SingleOrDefault(user => user.Email == Email);
+            if (RetrievedUser != null && Password != null) {
+                var Hasher = new PasswordHasher<User>();
+                if (0 != Hasher.VerifyHashedPassword(RetrievedUser, RetrievedUser.Password, Password)) {
+                    HttpContext.Session.SetInt32("CurrentUserId", RetrievedUser.UserId);
+                    return RedirectToAction("Account");
+                }
+            }
+            return View("Login");
+        }
+
+        [HttpGet]
+        [Route("logout")]
+        public IActionResult Logout() {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
+        }
+
+        [HttpPost]
+        [Route("register")]
+        public IActionResult Register(RegisterViewModel model) {
+            
+            if(ModelState.IsValid) {
+                User user = new User {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    Password = model.Password,
+                    AccountBalance = 0.0,
+                    created_at = DateTime.Now,
+                    updated_at = DateTime.Now
+                };
+
+                PasswordHasher<User> Hasher = new PasswordHasher<User>();
+                user.Password = Hasher.HashPassword(user, model.Password);
+
+                _context.Add(user);
+                _context.SaveChanges();
+                return RedirectToAction("Login");
+            }
+
+            return View("Index");
         }
 
         [HttpGet]
         [Route("account")]
         public IActionResult Account() {
-            List<User> Users = _context.Users.Include(user => user.Transactions).ToList();
-            return View("Account");
+            if (HttpContext.Session.GetInt32("CurrentUserId") != null) {
+                User RetrievedUser = _context.Users.SingleOrDefault(user => user.UserId == HttpContext.Session.GetInt32("CurrentUserId"));
+                ViewBag.RetrievedUser = RetrievedUser;
+
+                List<Transaction> ReturnedTransactions = _context.Transactions.Where(transaction => transaction.UserId == RetrievedUser.UserId).ToList();
+                ViewBag.ReturnedTransactions = ReturnedTransactions;
+
+                return View("Account");
+            }
+            return RedirectToAction("Login");
         }
 
         [HttpPost]
-        [Route("register")]
-        public IActionResult Register(User user) {
-            
-            if(ModelState.IsValid) {
-                PasswordHasher<User> Hasher = new PasswordHasher<User>();
-                user.Password = Hasher.HashPassword(user, user.Password);
-            }
+        [Route("createtransaction")]
+        public IActionResult CreateTransaction(Transaction transact) {
+            if (ModelState.IsValid && HttpContext.Session.GetInt32("CurrentUserId") != null) {
+                Transaction NewTrans = new Transaction {
+                    Amount = Convert.ToDouble(transact.Amount),
+                    UserId = (int)HttpContext.Session.GetInt32("CurrentUserId"),
+                    created_at = DateTime.Now,
+                    updated_at = DateTime.Now
+                };
+                _context.Add(NewTrans);
+                _context.SaveChanges();
 
-            return RedirectToAction("Login");
+                User RetrievedUser = _context.Users.SingleOrDefault(user => user.UserId == HttpContext.Session.GetInt32("CurrentUserId"));
+                List<Transaction> ReturnedValues = _context.Transactions.Where(transaction => transaction.UserId == RetrievedUser.UserId).ToList();
+                int sum = (int)ReturnedValues.Sum(s => s.Amount);
+                RetrievedUser.AccountBalance = sum;
+                _context.SaveChanges();
+
+                return RedirectToAction("Account");
+            }
+            return View("Account");
         }
     }
 }

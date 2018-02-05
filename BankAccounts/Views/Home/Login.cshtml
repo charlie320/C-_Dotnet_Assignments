@@ -1,18 +1,20 @@
 <link rel="stylesheet" href="~/css/login.css">
 
+@model BankAccounts.Models.RegisterViewModel
+
 <div id="upper-border"></div>
 
 <div id="login-container">
     <h1>Login</h1>
     <a href="index">Need to register?</a>
-    <form>
+    <form action="Login" method="POST">
         <div class="input-div">
             <label class="input-label">Email Address:</label>
-            <input class="form-input" placeholder="Email Address">
+            <input class="form-input" placeholder="Email Address" name="Email">
         </div>
         <div class="input-div">
             <label class="input-label">Password:</label>
-            <input class="form-input" placeholder="Password">
+            <input type="password" class="form-input" placeholder="Password" name="Password">
         </div>
         <input type="submit" value="Submit">
     </form>

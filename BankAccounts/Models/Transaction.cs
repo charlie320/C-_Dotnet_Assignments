@@ -8,7 +8,10 @@ namespace BankAccounts.Models
         [Key]
         public int TransId { get; set; }
 
-        public string Amount {get; set;}
+        [Required]   
+        [Range(-999999999, 999999999)]
+        [Display(Name = "Amount")]
+        public double Amount {get; set;}
 
         public DateTime created_at {get; set;}
 

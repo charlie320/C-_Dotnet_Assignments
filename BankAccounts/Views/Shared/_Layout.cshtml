@@ -15,10 +15,16 @@
 
     </header>
     <nav>
-        <a href="index">Register</a>
-        <a href="login">Login</a>
-        <a href="login">Logout</a>
-        <a href="account">Account</a>
+        @{
+            if (@ViewBag.InitSession != null) {
+                <a href="index">Register</a>
+                <a href="login">Login</a>
+            } else {
+                <a href="logout">Logout</a>
+            }
+        }
+
+
     </nav>    
     <div class="container body-content">
         @RenderBody()
