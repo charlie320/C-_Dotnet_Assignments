@@ -1,0 +1,39 @@
+#container {
+    margin-left: 5px;
+}
+
+.input-div {
+    margin: 10px 0 0 10px;
+}
+
+.input-label {
+    display: inline-block;
+    width: 150px;
+}
+
+.form-input {
+    height: 25px;
+    width: 200px;
+    border: 1px solid rgb(175, 175, 175);
+    border-radius: 3px;
+}
+
+input[type="submit"] {
+    display: inline-block;
+    width: 80px;
+    height: auto;
+    font-family: sans-serif;
+    font-size: .75em;
+    padding: 7px 10px;
+    margin: 15px 0 0 10px;
+    background-color: rgb(128, 128, 128);
+    border: 2px solid rgb(39, 39, 39);
+    color: rgb(255, 255, 255);
+    border-radius: 2px;  
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(165, 0, 0);
+    border: 2px solid rgb(0, 35, 148);
+    color: #eee;
+}
