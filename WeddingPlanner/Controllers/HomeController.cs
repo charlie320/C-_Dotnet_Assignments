@@ -93,7 +93,10 @@ namespace WeddingPlanner.Controllers
         [HttpGet]
         [Route("dashboard")]
         public IActionResult Dashboard() {
-
+            List<Wedding> AllWeddings = _context.Weddings.ToList();
+            ViewBag.allWeddings = AllWeddings;
+            User CurrentUser = _context.Users.SingleOrDefault(u => u.UserId == HttpContext.Session.GetInt32("CurrentUserId"));
+            ViewBag.currentUser = CurrentUser;
             return View("Dashboard");
         }
 

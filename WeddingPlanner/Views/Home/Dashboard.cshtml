@@ -1,2 +1,46 @@
-<h1>Welcome to the Wedding Planner</h1>
+<linK rel="stylesheet" href="~/css/dashboard.css">
+
+<h1>Welcome User</h1>
+<h2>Upcoming Weddings</h2>
+<table>
+    <tr>
+        <th>
+            Wedding
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Guest
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+
+    @{
+        foreach (var wedding in @ViewBag.allWeddings) {
+                <tr>
+                    <td>
+                        @wedding.WedderOne &amp; @wedding.WedderTwo
+                    </td>
+                    <td>
+                        @wedding.Date.ToString("MMM d, yyyy")
+                    </td>
+                    <td>
+                        @wedding.GuestsAttending.Count
+                    </td>
+                    <td>
+                        @if (@ViewBag.currentUser.UserId == @wedding.PlannerId) {
+                            <a href="#">Delete</a>
+                        } else {
+                            <a href="#">RSVP</a><a href="#">Cancel</a>
+                        }
+                    </td>
+                </tr>
+        }
+    }
+
+</table>
+
 <a href="newwedding">New Wedding</a>
