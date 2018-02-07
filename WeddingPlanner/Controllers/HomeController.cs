@@ -43,7 +43,7 @@ namespace WeddingPlanner.Controllers
                 }
             }
             ViewBag.error = "Login information is invalid.";
-            return View("Login");
+            return View("Index");
         }
 
         [HttpGet]

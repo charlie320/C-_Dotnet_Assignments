@@ -5,9 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using WeddingPlanner.Models;
 using System.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using ApiCaller;
 
 namespace WeddingPlanner.Controllers
 {
@@ -28,6 +31,7 @@ namespace WeddingPlanner.Controllers
             if (HttpContext.Session.GetInt32("CurrentUserId") != null) {
                 Wedding RetrievedWedding = _context.Weddings.Where(w => w.WeddingId == weddingId).Include(g => g.GuestsAttending).ThenInclude(gA => gA.Guest).SingleOrDefault();
                 ViewBag.wedding = RetrievedWedding;
+                SearchAddress(RetrievedWedding.WeddingAddress, weddingId);
                 return View("Wedding");
             }
             return RedirectToAction("Index", "Home");
@@ -76,6 +80,39 @@ namespace WeddingPlanner.Controllers
             return View("Index", "Home");
         }
 
+
+
+// **********************************************************************************************************************************************
+
+
+        [HttpGet]
+        [Route("searchaddress")]
+        public IActionResult SearchAddress(string address, int id)        
+        {           
+            JObject WeddingLocationData = new JObject();
+            
+            WebRequest.GetWeddingDataAsync(address, ApiResponse =>
+                {
+                    WeddingLocationData = ApiResponse;
+                }
+            ).Wait();
+
+            JToken WeddingCoordinates = new JObject();
+            WeddingCoordinates = WeddingLocationData.SelectToken("results[0].geometry.location");
+            // Console.WriteLine(WeddingCoordinates);
+            // Console.WriteLine(WeddingCoordinates["lat"].GetType());
+            double latitude = (double)WeddingCoordinates["lat"];
+            double longitude = (double)WeddingCoordinates["lng"];
+            Console.WriteLine(latitude);
+            // Console.WriteLine(WeddingLocationData.SelectToken("results[0].geometry.location").GetType());
+            return RedirectToAction("Wedding", new {weddingId = id});
+        }
+
+// **********************************************************************************************************************************************
+
+
+
+
         [HttpGet]
         [Route("delete/{weddingId}")]
         public IActionResult Delete(int weddingId) {
@@ -103,5 +140,6 @@ namespace WeddingPlanner.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
     }
 }
