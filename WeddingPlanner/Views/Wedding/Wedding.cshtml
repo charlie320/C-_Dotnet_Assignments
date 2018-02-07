@@ -14,7 +14,7 @@
 
 <h1>@ViewBag.wedding.WedderOne &amp; @ViewBag.wedding.WedderTwo&#39;s Wedding</h1>
 <h2>Date: @ViewBag.wedding.Date.ToString("MMMM d, yyyy");</h2>
-<h2>Location: @ViewBag.wedding.WeddingAddress;</h2>
+<h2>Location: @ViewBag.wedding.WeddingAddress</h2>
 <div class="row">
     <div class="col col-left">
         <h2>Guests:</h2>
@@ -34,12 +34,13 @@
 </div>
 
 <script type="text/javascript">
-
+    var wedding_lat = '@ViewBag.wedding.Latitude';
+    var wedding_lng = '@ViewBag.wedding.Longitude';
     function myMap()
     {
  
-    myCenter=new google.maps.LatLng(32.9029, -96.5639);
-    // myCenter=new google.maps.LatLng(coordinates.lat, coordinate.lng);
+    // myCenter=new google.maps.LatLng(32.9029, -96.5639);
+    myCenter=new google.maps.LatLng(wedding_lat, wedding_lng);
     // myCenter=new google.maps.LatLng(latitude, (longitude));
     var mapOptions= {
         center:myCenter,

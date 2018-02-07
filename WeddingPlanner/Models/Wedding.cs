@@ -17,6 +17,10 @@ namespace WeddingPlanner.Models
 
         public string WeddingAddress {get; set;}
 
+        public double Latitude {get; set;}
+
+        public double Longitude {get; set;}
+
         public int PlannerId {get; set;}
 
         public User Planner {get; set;}

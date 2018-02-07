@@ -23,7 +23,6 @@ namespace WeddingPlanner.Controllers
             _context = context;
         }
 
-        // GET: /Home/
         [HttpGet]
         [Route("wedding/{weddingId}")]
         public IActionResult Wedding(int weddingId)
@@ -31,7 +30,6 @@ namespace WeddingPlanner.Controllers
             if (HttpContext.Session.GetInt32("CurrentUserId") != null) {
                 Wedding RetrievedWedding = _context.Weddings.Where(w => w.WeddingId == weddingId).Include(g => g.GuestsAttending).ThenInclude(gA => gA.Guest).SingleOrDefault();
                 ViewBag.wedding = RetrievedWedding;
-                SearchAddress(RetrievedWedding.WeddingAddress, weddingId);
                 return View("Wedding");
             }
             return RedirectToAction("Index", "Home");
@@ -51,11 +49,16 @@ namespace WeddingPlanner.Controllers
         public IActionResult CreateWedding(Wedding model) {
             
             if(ModelState.IsValid && HttpContext.Session.GetInt32("CurrentUserId") != null) {
+                JToken AddressCoordinates = SearchAddress(model.WeddingAddress);
+                double latitude = (double)AddressCoordinates["lat"];
+                double longitude = (double)AddressCoordinates["lng"];
                 Wedding wedding = new Wedding {
                     WedderOne = model.WedderOne,
                     WedderTwo = model.WedderTwo,
                     Date = model.Date,
                     WeddingAddress = model.WeddingAddress,
+                    Latitude = latitude,
+                    Longitude = longitude,
                     PlannerId = (int)HttpContext.Session.GetInt32("CurrentUserId"),
                     created_at = DateTime.Now,
                     updated_at = DateTime.Now
@@ -80,14 +83,9 @@ namespace WeddingPlanner.Controllers
             return View("Index", "Home");
         }
 
-
-
 // **********************************************************************************************************************************************
-
-
-        [HttpGet]
-        [Route("searchaddress")]
-        public IActionResult SearchAddress(string address, int id)        
+// Method to obtain GPS coordinates
+        public JToken SearchAddress(string address)
         {           
             JObject WeddingLocationData = new JObject();
             
@@ -99,19 +97,10 @@ namespace WeddingPlanner.Controllers
 
             JToken WeddingCoordinates = new JObject();
             WeddingCoordinates = WeddingLocationData.SelectToken("results[0].geometry.location");
-            // Console.WriteLine(WeddingCoordinates);
-            // Console.WriteLine(WeddingCoordinates["lat"].GetType());
-            double latitude = (double)WeddingCoordinates["lat"];
-            double longitude = (double)WeddingCoordinates["lng"];
-            Console.WriteLine(latitude);
-            // Console.WriteLine(WeddingLocationData.SelectToken("results[0].geometry.location").GetType());
-            return RedirectToAction("Wedding", new {weddingId = id});
+            return WeddingCoordinates;
         }
 
 // **********************************************************************************************************************************************
-
-
-
 
         [HttpGet]
         [Route("delete/{weddingId}")]
@@ -119,10 +108,11 @@ namespace WeddingPlanner.Controllers
             if (HttpContext.Session.GetInt32("CurrentUserId") != null) {
                 Wedding RetrievedWedding = _context.Weddings.Where(w => w.WeddingId == weddingId).SingleOrDefault();
                 _context.Weddings.Remove(RetrievedWedding);
-                // _context.SaveChanges();
 
-                WeddingConfirmation RetrievedWeddingConfirmation = _context.WeddingConfirmations.Where(w => w.WeddingId == weddingId).SingleOrDefault();
-                _context.WeddingConfirmations.Remove(RetrievedWeddingConfirmation);
+                List<WeddingConfirmation> RetrievedWeddingConfirmations = _context.WeddingConfirmations.Where(w => w.WeddingId == weddingId).ToList();
+                foreach (var item in RetrievedWeddingConfirmations) {
+                    _context.WeddingConfirmations.Remove(item);
+                }
                 _context.SaveChanges();
 
             return RedirectToAction("Dashboard", "Home");

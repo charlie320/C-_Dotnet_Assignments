@@ -11,9 +11,10 @@ using WeddingPlanner.Models;
 namespace WeddingPlanner.Migrations
 {
     [DbContext(typeof(WeddingPlannerContext))]
-    partial class WeddingPlannerContextModelSnapshot : ModelSnapshot
+    [Migration("20180207221529_WeddingCoordinates")]
+    partial class WeddingCoordinates
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,10 +50,6 @@ namespace WeddingPlanner.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<double>("Latitude");
-
-                    b.Property<double>("Longitude");
-
                     b.Property<int>("PlannerId");
 
                     b.Property<string>("WedderOne");
@@ -62,6 +59,10 @@ namespace WeddingPlanner.Migrations
                     b.Property<string>("WeddingAddress");
 
                     b.Property<DateTime>("created_at");
+
+                    b.Property<double>("latitude");
+
+                    b.Property<double>("longitude");
 
                     b.Property<DateTime>("updated_at");
 
