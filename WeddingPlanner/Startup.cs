@@ -29,7 +29,7 @@ namespace WeddingPlanner
             services.AddSession();
             services.AddEntityFrameworkNpgsql().AddDbContext<WeddingPlannerContext>(opt => 
             // opt.UseNpgsql(Configuration.GetConnectionString("MyWebApiConnection")));
-            opt.UseNpgsql("User ID = postgres;Password=xxxxx;Server=localhost;Port=5432;Database=WeddingPlannerDB;Integrated Security=true;Pooling=true"));
+            opt.UseNpgsql("User ID = postgres;Password=postgres;Server=localhost;Port=5432;Database=WeddingPlannerDB;Integrated Security=true;Pooling=true"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

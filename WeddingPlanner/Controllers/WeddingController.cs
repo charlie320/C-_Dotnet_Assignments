@@ -22,18 +22,24 @@ namespace WeddingPlanner.Controllers
 
         // GET: /Home/
         [HttpGet]
-        [Route("wedding/{id}")]
-        public IActionResult Wedding()
+        [Route("wedding/{weddingId}")]
+        public IActionResult Wedding(int weddingId)
         {
-            
-            return View("Wedding");
+            if (HttpContext.Session.GetInt32("CurrentUserId") != null) {
+                Wedding RetrievedWedding = _context.Weddings.Where(w => w.WeddingId == weddingId).Include(g => g.GuestsAttending).ThenInclude(gA => gA.Guest).SingleOrDefault();
+                ViewBag.wedding = RetrievedWedding;
+                return View("Wedding");
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
         [Route("newwedding")]
         public IActionResult NewWedding() {
-
-            return View("NewWedding");
+            if (HttpContext.Session.GetInt32("CurrentUserId") != null) {
+                return View("NewWedding");
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
@@ -71,11 +77,31 @@ namespace WeddingPlanner.Controllers
         }
 
         [HttpGet]
+        [Route("delete/{weddingId}")]
+        public IActionResult Delete(int weddingId) {
+            if (HttpContext.Session.GetInt32("CurrentUserId") != null) {
+                Wedding RetrievedWedding = _context.Weddings.Where(w => w.WeddingId == weddingId).SingleOrDefault();
+                _context.Weddings.Remove(RetrievedWedding);
+                // _context.SaveChanges();
+
+                WeddingConfirmation RetrievedWeddingConfirmation = _context.WeddingConfirmations.Where(w => w.WeddingId == weddingId).SingleOrDefault();
+                _context.WeddingConfirmations.Remove(RetrievedWeddingConfirmation);
+                _context.SaveChanges();
+
+            return RedirectToAction("Dashboard", "Home");
+            }
+            return ViewBag("Index");
+        }
+
+        [HttpGet]
         [Route("allweddings")]
         public IActionResult AllWeddings() {
-            List<Wedding> AllWeddings = _context.Weddings.ToList();
-            ViewBag.allWeddings = AllWeddings;
-            return View("AllWeddings");
+            if (HttpContext.Session.GetInt32("CurrentUserId") != null) {
+                List<Wedding> AllWeddings = _context.Weddings.ToList();
+                ViewBag.allWeddings = AllWeddings;
+                return View("AllWeddings");
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }

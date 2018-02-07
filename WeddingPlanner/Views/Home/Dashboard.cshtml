@@ -1,6 +1,9 @@
 <linK rel="stylesheet" href="~/css/dashboard.css">
 
-<h1>Welcome User</h1>
+@model WeddingPlanner.Models.Wedding
+@using WeddingPlanner.Models;
+
+<h1>Welcome @ViewBag.currentUser.FirstName</h1>
 <h2>Upcoming Weddings</h2>
 <table>
     <tr>
@@ -11,7 +14,7 @@
             Date
         </th>
         <th>
-            Guest
+            Guests
         </th>
         <th>
             Action
@@ -19,10 +22,10 @@
     </tr>
 
     @{
-        foreach (var wedding in @ViewBag.allWeddings) {
+        foreach (Wedding wedding in @ViewBag.allWeddings) {
                 <tr>
                     <td>
-                        @wedding.WedderOne &amp; @wedding.WedderTwo
+                        <a href="/wedding/@wedding.WeddingId">@wedding.WedderOne &amp; @wedding.WedderTwo</a>
                     </td>
                     <td>
                         @wedding.Date.ToString("MMM d, yyyy")
@@ -31,10 +34,15 @@
                         @wedding.GuestsAttending.Count
                     </td>
                     <td>
-                        @if (@ViewBag.currentUser.UserId == @wedding.PlannerId) {
-                            <a href="#">Delete</a>
+                        @if (@ViewBag.currentUser.UserId == wedding.PlannerId) {
+                            <a href="delete/@wedding.WeddingId">Delete</a>
+                        } else if (wedding.GuestsAttending.Where(g => g.GuestId == @ViewBag.currentUser.UserId).SingleOrDefault() == null) {
+                            <form action="CreateConfirmation" method="POST">
+                                <input type="hidden" name="weddingId" value=@wedding.WeddingId>
+                                <input type="submit" value="RSVP">
+                            </form>
                         } else {
-                            <a href="#">RSVP</a><a href="#">Cancel</a>
+                            <a href="cancel/@wedding.WeddingId">Cancel</a>
                         }
                     </td>
                 </tr>

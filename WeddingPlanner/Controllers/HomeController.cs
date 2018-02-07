@@ -73,7 +73,7 @@ namespace WeddingPlanner.Controllers
 
                 _context.Add(user);
                 _context.SaveChanges();
-                return RedirectToAction("Login");
+                return RedirectToAction("Index");
             }
 
             // *****One way to extract validation errors*****
@@ -93,11 +93,41 @@ namespace WeddingPlanner.Controllers
         [HttpGet]
         [Route("dashboard")]
         public IActionResult Dashboard() {
-            List<Wedding> AllWeddings = _context.Weddings.ToList();
-            ViewBag.allWeddings = AllWeddings;
             User CurrentUser = _context.Users.SingleOrDefault(u => u.UserId == HttpContext.Session.GetInt32("CurrentUserId"));
-            ViewBag.currentUser = CurrentUser;
+            if (CurrentUser != null) {
+                // List<WeddingConfirmation> MyConfirmations = _context.WeddingConfirmations.Where(confirmation => confirmation.GuestId == HttpContext.Session.GetInt32("CurrentUserId")).ToList();                
+                List<Wedding> AllWeddings = _context.Weddings.Include(w => w.GuestsAttending).ToList();
+
+                // ViewBag.myConfirmations = MyConfirmations;
+                ViewBag.allWeddings = AllWeddings;
+                ViewBag.currentUser = CurrentUser;
             return View("Dashboard");
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [Route("CreateConfirmation")]
+        public IActionResult CreateConfirmation(int weddingId) {
+            if (HttpContext.Session.GetInt32("CurrentUserId") != null) {
+                WeddingConfirmation confirm = new WeddingConfirmation {
+                    GuestId = (int)HttpContext.Session.GetInt32("CurrentUserId"),
+                    WeddingId = weddingId
+                };
+                _context.Add(confirm);
+                _context.SaveChanges();
+                return RedirectToAction("Dashboard");
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        [Route("cancel/{weddingId}")]
+        public IActionResult Cancel(int weddingId) {
+            WeddingConfirmation RetrievedWeddingConfirmation = _context.WeddingConfirmations.Where(w => w.WeddingId == weddingId).Where(p => p.GuestId == HttpContext.Session.GetInt32("CurrentUserId")).SingleOrDefault();
+            _context.WeddingConfirmations.Remove(RetrievedWeddingConfirmation);
+            _context.SaveChanges();
+            return RedirectToAction("Dashboard");
         }
 
         [HttpGet]
@@ -110,9 +140,23 @@ namespace WeddingPlanner.Controllers
         [HttpGet]
         [Route("allusers")]
         public IActionResult AllUsers() {
-            List<User> AllUsers = _context.Users.ToList();
-            ViewBag.allUsers = AllUsers;
-            return View("AllUsers");
+            if (HttpContext.Session.GetInt32("CurrentUserId") != null) {
+                List<User> AllUsers = _context.Users.ToList();
+                ViewBag.allUsers = AllUsers;
+                return View("AllUsers");
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        [Route("allconfirmations")]
+        public IActionResult AllConfirmations() {
+            if (HttpContext.Session.GetInt32("CurrentUserId") != null) {
+                List<WeddingConfirmation> AllConfirmations = _context.WeddingConfirmations.ToList();
+                ViewBag.allConfirmations = AllConfirmations;
+                return View("AllConfirmations");
+            }
+            return RedirectToAction("Index");
         }
     }
 }

@@ -1,1 +1,48 @@
-<h1>Wedding Info Page</h1>
+@{
+    ViewData["Title"] = "Wedding Page";
+}
+
+@model WeddingPlanner.Models.Wedding
+@using WeddingPlanner.Models;
+
+<link rel="stylesheet" href="~/css/wedding.css">
+
+<h1>@ViewBag.wedding.WedderOne &amp; @ViewBag.wedding.WedderTwo&#39;s Wedding</h1>
+<h2>Date: @ViewBag.wedding.Date.ToString("MMMM d, yyyy");</h2>
+<div class="row">
+    <div class="col col-left">
+        <h2>Guests:</h2>
+        @{
+            foreach (var wedding in @ViewBag.wedding.GuestsAttending) {
+                <p>@wedding.Guest.FirstName @wedding.Guest.LastName</p>
+            }
+        }
+    </div>
+    <div class="col col-right">
+        <div id="googleMap"></div>
+    </div>
+</div>
+
+
+<script>
+
+
+    function myMap()
+    {
+    myCenter=new google.maps.LatLng(32.9029, 96.5639);
+    // myCenter=new google.maps.LatLng(latitude, (longitude));
+    var mapOptions= {
+        center:myCenter,
+        zoom:12, scrollwheel: false, draggable: false,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+    };
+    var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+
+    var marker = new google.maps.Marker({
+        position: myCenter,
+    });
+    marker.setMap(map);
+    }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8nT4t5PPhWqjyRpWOHyXFCh5LAdvsavY&callback=myMap"></script>
