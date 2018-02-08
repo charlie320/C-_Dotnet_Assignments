@@ -13,7 +13,6 @@ namespace WeddingPlanner.Controllers
 {
     public class HomeController : Controller
     {
-
         private WeddingPlannerContext _context;
 
         public HomeController(WeddingPlannerContext context) {
@@ -36,7 +35,6 @@ namespace WeddingPlanner.Controllers
 
         [HttpPost]
         [Route("login")]
-        // public IActionResult Login(string Email, string Password) {
         public IActionResult Login(User LoginUser) {
             
             User RetrievedUser = _context.Users.SingleOrDefault(user => user.Email == LoginUser.Email);
