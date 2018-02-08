@@ -95,10 +95,8 @@ namespace WeddingPlanner.Controllers
         public IActionResult Dashboard() {
             User CurrentUser = _context.Users.SingleOrDefault(u => u.UserId == HttpContext.Session.GetInt32("CurrentUserId"));
             if (CurrentUser != null) {
-                // List<WeddingConfirmation> MyConfirmations = _context.WeddingConfirmations.Where(confirmation => confirmation.GuestId == HttpContext.Session.GetInt32("CurrentUserId")).ToList();                
                 List<Wedding> AllWeddings = _context.Weddings.Include(w => w.GuestsAttending).ToList();
 
-                // ViewBag.myConfirmations = MyConfirmations;
                 ViewBag.allWeddings = AllWeddings;
                 ViewBag.currentUser = CurrentUser;
             return View("Dashboard");
@@ -152,7 +150,7 @@ namespace WeddingPlanner.Controllers
         [Route("allconfirmations")]
         public IActionResult AllConfirmations() {
             if (HttpContext.Session.GetInt32("CurrentUserId") != null) {
-                List<WeddingConfirmation> AllConfirmations = _context.WeddingConfirmations.ToList();
+                List<WeddingConfirmation> AllConfirmations = _context.WeddingConfirmations.OrderBy(wc => wc.WeddingId).ToList();
                 ViewBag.allConfirmations = AllConfirmations;
                 return View("AllConfirmations");
             }

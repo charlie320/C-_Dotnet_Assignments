@@ -80,7 +80,7 @@ namespace WeddingPlanner.Controllers
             // IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
             // ViewBag.errors = allErrors;
 
-            return View("Index", "Home");
+            return View("NewWedding");
         }
 
 // **********************************************************************************************************************************************
