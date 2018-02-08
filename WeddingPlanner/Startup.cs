@@ -29,7 +29,6 @@ namespace WeddingPlanner
             services.AddSession();
             services.AddEntityFrameworkNpgsql().AddDbContext<WeddingPlannerContext>(opt => 
             opt.UseNpgsql(Configuration.GetConnectionString("MyWebApiConnection")));
-            Console.WriteLine("Configuration:  " + Configuration.GetConnectionString("MyWebApiConnection"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
