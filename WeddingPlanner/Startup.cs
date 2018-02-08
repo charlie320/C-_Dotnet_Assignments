@@ -20,7 +20,7 @@ namespace WeddingPlanner
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; private set;}
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -28,8 +28,8 @@ namespace WeddingPlanner
             services.AddMvc();
             services.AddSession();
             services.AddEntityFrameworkNpgsql().AddDbContext<WeddingPlannerContext>(opt => 
-            // opt.UseNpgsql(Configuration.GetConnectionString("MyWebApiConnection")));
-            opt.UseNpgsql("User ID = postgres;Password=postgres;Server=localhost;Port=5432;Database=WeddingPlannerDB;Integrated Security=true;Pooling=true"));
+            opt.UseNpgsql(Configuration.GetConnectionString("MyWebApiConnection")));
+            Console.WriteLine("Configuration:  " + Configuration.GetConnectionString("MyWebApiConnection"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

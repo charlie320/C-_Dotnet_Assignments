@@ -1,0 +1,102 @@
+#upper-border {
+    width: 900px;
+    height: 15px;
+    border-bottom: 2px solid rgb(114, 114, 114);
+}
+
+#lower-border {
+    width: 900px;
+    height: 15px;
+    border-bottom: 2px solid rgb(114, 114, 114);
+}
+
+#login-container {
+    margin-left: 5px;
+}
+
+.login-row {
+    color: #73a08a;
+    font-family: 'Tangerine', serif;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.login-col {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#login-h1 {
+    font-size: 3em;
+    font-family: serif;
+    line-height: .5em;
+}
+
+.login-col > form > div > label {
+    font-size: 1.5em;
+}
+
+img.login-col {
+    width: 400px;
+    margin: 10px;
+    border: 8px solid rgb(255, 242, 231);
+}
+
+.input-div {
+    margin: 10px 0 0 10px;
+}
+
+.input-label {
+    display: inline-block;
+    width: 150px;
+}
+
+.form-input {
+    height: 25px;
+    width: 200px;
+    border: 1px solid rgb(175, 175, 175);
+    border-radius: 3px;
+}
+
+input[type="submit"] {
+    display: inline-block;
+    width: 80px;
+    height: auto;
+    font-family: sans-serif;
+    font-size: .75em;
+    padding: 7px 10px;
+    margin: 15px 0 0 10px;
+    background-color: rgb(128, 128, 128);
+    border: 2px solid rgb(39, 39, 39);
+    color: rgb(255, 255, 255);
+    border-radius: 2px;  
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(165, 0, 0);
+    border: 2px solid rgb(0, 35, 148);
+    color: #eee;
+}
+
+div > a {
+    display: inline-block;
+    width: 45%;
+    height: 25px;
+    margin: 0 0 10px 10px;
+    color: #73a08a;
+    margin-right: 15px;
+    font-family: 'Tangerine', serif;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+a:hover {
+    color:  #b7cec3;
+}
+
+#error-div {
+    color: red;
+    font-family: serif;
+    font-size: 1em;
+    margin: 8px;
+}

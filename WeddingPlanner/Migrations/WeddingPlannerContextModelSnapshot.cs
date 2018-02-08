@@ -55,11 +55,14 @@ namespace WeddingPlanner.Migrations
 
                     b.Property<int>("PlannerId");
 
-                    b.Property<string>("WedderOne");
+                    b.Property<string>("WedderOne")
+                        .IsRequired();
 
-                    b.Property<string>("WedderTwo");
+                    b.Property<string>("WedderTwo")
+                        .IsRequired();
 
-                    b.Property<string>("WeddingAddress");
+                    b.Property<string>("WeddingAddress")
+                        .IsRequired();
 
                     b.Property<DateTime>("created_at");
 

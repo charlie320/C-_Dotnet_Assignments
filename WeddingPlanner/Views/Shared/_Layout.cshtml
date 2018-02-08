@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WeddingPlanner</title>
-    
+    <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
@@ -13,17 +14,23 @@
         <h1>Wedding Planner</h1>
     </header>
     <nav>
-        <a href="/registerform">Register</a>
-        <a href="/index">Login</a>
-        <a href="/logout">Logout</a>
-        <a href="/dashboard">Dashboard</a>
-        <a href="/allusers">All Users</a>
-        <a href="/allweddings">All Weddings</a>
-        <a href="/allconfirmations">All Wedding Confirmations</a>
+        @{
+            if (@ViewBag.InitSession == null) {
+                <a href="/registerform">Register</a>
+                <a href="/index">Login</a>
+            } else {
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">Logout</a>
+                <a href="/allusers">All Users</a>
+                <a href="/allweddings">All Weddings</a>
+                <a href="/allweddingconfirmations">All Wedding Confirmations</a>
+            }
+        }
     </nav>
     <div class="container body-content">
         @RenderBody()
     </div>
+    <footer></footer>
         
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.js"

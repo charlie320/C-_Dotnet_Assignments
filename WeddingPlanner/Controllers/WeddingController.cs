@@ -29,6 +29,7 @@ namespace WeddingPlanner.Controllers
         {
             if (HttpContext.Session.GetInt32("CurrentUserId") != null) {
                 Wedding RetrievedWedding = _context.Weddings.Where(w => w.WeddingId == weddingId).Include(g => g.GuestsAttending).ThenInclude(gA => gA.Guest).SingleOrDefault();
+                ViewBag.InitSession = HttpContext.Session.GetInt32("CurrentUserId");
                 ViewBag.wedding = RetrievedWedding;
                 return View("Wedding");
             }
@@ -39,6 +40,7 @@ namespace WeddingPlanner.Controllers
         [Route("newwedding")]
         public IActionResult NewWedding() {
             if (HttpContext.Session.GetInt32("CurrentUserId") != null) {
+                ViewBag.InitSession = HttpContext.Session.GetInt32("CurrentUserId");
                 return View("NewWedding");
             }
             return RedirectToAction("Index", "Home");
@@ -47,6 +49,7 @@ namespace WeddingPlanner.Controllers
         [HttpPost]
         [Route("createwedding")]
         public IActionResult CreateWedding(Wedding model) {
+            ViewBag.InitSession = HttpContext.Session.GetInt32("CurrentUserId");
             
             if(ModelState.IsValid && HttpContext.Session.GetInt32("CurrentUserId") != null) {
                 JToken AddressCoordinates = SearchAddress(model.WeddingAddress);
@@ -125,6 +128,7 @@ namespace WeddingPlanner.Controllers
         public IActionResult AllWeddings() {
             if (HttpContext.Session.GetInt32("CurrentUserId") != null) {
                 List<Wedding> AllWeddings = _context.Weddings.ToList();
+                ViewBag.InitSession = HttpContext.Session.GetInt32("CurrentUserId");                
                 ViewBag.allWeddings = AllWeddings;
                 return View("AllWeddings");
             }

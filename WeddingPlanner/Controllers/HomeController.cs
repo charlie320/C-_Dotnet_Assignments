@@ -20,12 +20,17 @@ namespace WeddingPlanner.Controllers
             _context = context;
         }
 
+// ******************************************************************************************************************************
+// ******************************************************************************************************************************
+// Login Registration Section
+
         [HttpGet]
         [Route("")]
         [Route("index")]
         public IActionResult Index() {
             HttpContext.Session.Clear();
-            ViewBag.InitSession = HttpContext.Session;
+            // ViewBag.InitSession = HttpContext.Session;
+            ViewBag.InitSession = HttpContext.Session.GetInt32("CurrentUserId");            
             return View("Index");
         }
 
@@ -38,7 +43,8 @@ namespace WeddingPlanner.Controllers
             if (RetrievedUser != null && LoginUser.Password != null) {
                 var Hasher = new PasswordHasher<User>();
                 if (0 != Hasher.VerifyHashedPassword(RetrievedUser, RetrievedUser.Password, LoginUser.Password)) {
-                    HttpContext.Session.SetInt32("CurrentUserId", RetrievedUser.UserId);
+                    HttpContext.Session.SetInt32("CurrentUserId", RetrievedUser.UserId);  // Set session
+                    ViewBag.InitSession = HttpContext.Session.GetInt32("CurrentUserId");
                     return RedirectToAction("Dashboard");
                 }
             }
@@ -50,7 +56,7 @@ namespace WeddingPlanner.Controllers
         [Route("registerform")]
         public IActionResult RegisterForm() {
             HttpContext.Session.Clear();
-            ViewBag.InitSession = HttpContext.Session;
+            ViewBag.InitSession = HttpContext.Session.GetInt32("CurrentUserId");
             return View("Register");
         }
 
@@ -90,13 +96,17 @@ namespace WeddingPlanner.Controllers
             return View("Index");
         }
 
+// End Login Registration section
+// ******************************************************************************************************************************
+// ******************************************************************************************************************************
+
         [HttpGet]
         [Route("dashboard")]
         public IActionResult Dashboard() {
             User CurrentUser = _context.Users.SingleOrDefault(u => u.UserId == HttpContext.Session.GetInt32("CurrentUserId"));
             if (CurrentUser != null) {
-                List<Wedding> AllWeddings = _context.Weddings.Include(w => w.GuestsAttending).ToList();
-
+                List<Wedding> AllWeddings = _context.Weddings.Include(w => w.GuestsAttending).OrderBy(wc => wc.Date).ToList();
+                ViewBag.InitSession = HttpContext.Session.GetInt32("CurrentUserId");
                 ViewBag.allWeddings = AllWeddings;
                 ViewBag.currentUser = CurrentUser;
             return View("Dashboard");
@@ -139,6 +149,7 @@ namespace WeddingPlanner.Controllers
         [Route("allusers")]
         public IActionResult AllUsers() {
             if (HttpContext.Session.GetInt32("CurrentUserId") != null) {
+                ViewBag.InitSession = HttpContext.Session.GetInt32("CurrentUserId");
                 List<User> AllUsers = _context.Users.ToList();
                 ViewBag.allUsers = AllUsers;
                 return View("AllUsers");
@@ -147,10 +158,11 @@ namespace WeddingPlanner.Controllers
         }
 
         [HttpGet]
-        [Route("allconfirmations")]
-        public IActionResult AllConfirmations() {
+        [Route("allweddingconfirmations")]
+        public IActionResult AllWeddingConfirmations() {
             if (HttpContext.Session.GetInt32("CurrentUserId") != null) {
                 List<WeddingConfirmation> AllConfirmations = _context.WeddingConfirmations.OrderBy(wc => wc.WeddingId).ToList();
+                ViewBag.InitSession = HttpContext.Session.GetInt32("CurrentUserId");                
                 ViewBag.allConfirmations = AllConfirmations;
                 return View("AllConfirmations");
             }

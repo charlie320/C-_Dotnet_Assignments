@@ -63,3 +63,7 @@
     // });
 
     // console.log("Location Info outside: " + location_info);
+
+
+
+// <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />

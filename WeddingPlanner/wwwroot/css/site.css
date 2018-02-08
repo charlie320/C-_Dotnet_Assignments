@@ -1,1 +1,41 @@
 /*Write all of your CSS here*/
+header {
+    width: 95%;
+    max-width: 800px;
+    height: 125px;
+    font-family: 'Tangerine', serif;
+    font-size: 2.5em;
+    color: #a2d4b3;
+    text-shadow: 2px 2px 2px rgb(143, 151, 151);
+    line-height: .5em;
+    border: 2px solid #73a08a;
+}
+
+header > h1 {
+    display: inline-block;
+    z-index: 1;
+}
+
+header > img {
+    height: 125px;
+    position: relative;
+    float: right;
+    z-index: 0;
+}
+
+nav {
+    padding: 15px;
+    font-family: 'Sacramento', cursive;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+nav > a {
+    color: #73a08a;
+    margin-right: 15px;
+    text-decoration-line: none;
+}
+
+nav > a:hover {
+    color:  #b7cec3;
+}
