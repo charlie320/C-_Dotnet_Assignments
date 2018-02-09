@@ -3,8 +3,8 @@
 @model WeddingPlanner.Models.Wedding
 @using WeddingPlanner.Models;
 
-<h1>Welcome @ViewBag.currentUser.FirstName</h1>
-<h2>Upcoming Weddings</h2>
+<h1 class="title">Welcome @ViewBag.currentUser.FirstName</h1>
+<h2 class="title">Upcoming Weddings</h2>
 <table>
     <tr>
         <th>
@@ -25,7 +25,7 @@
         foreach (Wedding wedding in @ViewBag.allWeddings) {
                 <tr>
                     <td>
-                        <a href="/wedding/@wedding.WeddingId">@wedding.WedderOne &amp; @wedding.WedderTwo</a>
+                        <a href="/wedding/@wedding.WeddingId" id="a-couple"><em>@wedding.WedderOne &amp; @wedding.WedderTwo</em></a>
                     </td>
                     <td>
                         @wedding.Date.ToString("MMM d, yyyy")
@@ -33,16 +33,16 @@
                     <td>
                         @wedding.GuestsAttending.Count
                     </td>
-                    <td>
+                    <td class="action-link">
                         @if (@ViewBag.currentUser.UserId == wedding.PlannerId) {
-                            <a href="delete/@wedding.WeddingId">Delete</a>
+                            <a href="delete/@wedding.WeddingId" id="action-link-delete">Delete</a>
                         } else if (wedding.GuestsAttending.Where(g => g.GuestId == @ViewBag.currentUser.UserId).SingleOrDefault() == null) {
                             <form action="CreateConfirmation" method="POST">
                                 <input type="hidden" name="weddingId" value=@wedding.WeddingId>
-                                <input type="submit" value="RSVP">
+                                <input type="submit" value="RSVP" id="action-link-submit">
                             </form>
                         } else {
-                            <a href="cancel/@wedding.WeddingId">Cancel</a>
+                            <a href="cancel/@wedding.WeddingId" id="action-link-cancel">Cancel</a>
                         }
                     </td>
                 </tr>
@@ -50,5 +50,6 @@
     }
 
 </table>
+<p id="more-info">Click on a couple for more info!</p>
 
-<a href="newwedding">New Wedding</a>
+<a href="newwedding" id="a-newwedding">New Wedding</a>
