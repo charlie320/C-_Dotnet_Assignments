@@ -81,13 +81,11 @@ a#action-link-delete {
 }
 
 a#action-link-delete:hover {
-    background-color: rgb(167, 226, 216);
-    border: 2px solid rgb(134, 165, 158);
-    color: #aaa;
+    background-color: rgb(162, 211, 204);
+    border: 2px solid rgb(66, 117, 98);
+    color: rgb(255, 255, 255);
+    border-radius: 3px; 
 }
-
-
-
 
 input[type="submit"]#action-link-submit {
     display: inline-block;
@@ -106,9 +104,12 @@ input[type="submit"]#action-link-submit {
 }
 
 input[type="submit"]#action-link-submit:hover {
-    background-color: #fdffae;
-    border: 2px solid rgb(122, 118, 76);
-    color: rgb(140, 121, 44);
+
+
+    background-color: rgb(223, 202, 226);
+    border: 2px solid rgb(139, 109, 144);
+    color: rgb(255, 255, 255);
+    border-radius: 3px; 
 }
 
 a#action-link-cancel {
@@ -128,9 +129,10 @@ a#action-link-cancel {
 }
 
 a#action-link-cancel:hover {
-    background-color: rgb(167, 226, 216);
-    border: 2px solid rgb(134, 165, 158);
-    color: #aaa;
+    background-color: #feffdb;
+    border: 2px solid rgb(80, 160, 153);
+    color: rgb(83, 156, 150);
+    border-radius: 3px;  
 }
 
 a#a-couple {

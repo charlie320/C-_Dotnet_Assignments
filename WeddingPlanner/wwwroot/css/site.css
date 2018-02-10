@@ -75,3 +75,7 @@ footer {
     line-height: .50;
     color: #73a08a;
 }
+
+footer > p > a {
+    color: #73a08a;
+}
