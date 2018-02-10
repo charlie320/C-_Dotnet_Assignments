@@ -18,7 +18,7 @@
     <nav>
         @{
             if (@ViewBag.InitSession == null) {
-                <a href="/registerform">Register</a>
+                <a href="/registerform" id="register-link">Register</a>
                 <a href="/index">Login</a>
             } else {
                 <a href="/dashboard">Dashboard</a>

@@ -57,13 +57,17 @@ nav {
 }
 
 nav > a {
-    margin-left: 15%;
+    margin-left: 10%;
     color: #73a08a;
     text-decoration-line: none;
 }
 
 nav > a:hover {
     color:  #b7cec3;
+}
+
+#register-link {
+    margin-left: 10px;
 }
 
 footer {
