@@ -11,7 +11,7 @@
 <body>
 
     <header>
-        <img src="/images/beatriz-perez-moya-513499-800x150.jpg">
+        <img src="/images/beatriz-perez-moya-513499-800x150.jpg" alt="Flowers and Ring">
         <div class="header-text-top">Wedding</div>
         <div class="header-text-bottom">Planner</div>
     </header>
@@ -22,14 +22,17 @@
                 <a href="/index">Login</a>
             } else {
                 <a href="/dashboard">Dashboard</a>
-                <a href="/logout">Logout</a>
+                <a href="/logout" id="logout-link">Logout</a>
             }
         }
     </nav>
     <div class="container body-content">
         @RenderBody()
     </div>
-    <footer></footer>
+    <footer>
+        <p>Created by Jesus C. de la Rosa with C#, ASP.NET Core and PostgreSQL.</p>
+        <p>Images courtesy of Unsplash.com and Tom Kulczycki, Beatriz Perez-Moya, and Anne Edgar.</p>
+    </footer>
         
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.js"

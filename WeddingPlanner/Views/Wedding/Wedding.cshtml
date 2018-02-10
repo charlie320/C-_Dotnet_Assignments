@@ -12,17 +12,19 @@
 
 <link rel="stylesheet" href="~/css/wedding.css">
 
-<h1>@ViewBag.wedding.WedderOne &amp; @ViewBag.wedding.WedderTwo&#39;s Wedding</h1>
-<h2>Date: @ViewBag.wedding.Date.ToString("MMMM d, yyyy");</h2>
-<h2>Location: @ViewBag.wedding.WeddingAddress</h2>
 <div class="row">
     <div class="col col-left">
-        <h2>Guests:</h2>
-        @{
-            foreach (var wedding in @ViewBag.wedding.GuestsAttending) {
-                <p>@wedding.Guest.FirstName @wedding.Guest.LastName</p>
+        <h1>@ViewBag.wedding.WedderOne &amp; @ViewBag.wedding.WedderTwo&#39;s Wedding</h1>
+        <h2>Date: @ViewBag.wedding.Date.ToString("MMMM d, yyyy");</h2>
+        <h2>Location: @ViewBag.wedding.WeddingAddress</h2>
+        <div id="guests-div">
+            <h2>Guests:</h2>
+            @{
+                foreach (var wedding in @ViewBag.wedding.GuestsAttending) {
+                    <p>@wedding.Guest.FirstName @wedding.Guest.LastName</p>
+                }
             }
-        }
+        </div>
     </div>
 
 

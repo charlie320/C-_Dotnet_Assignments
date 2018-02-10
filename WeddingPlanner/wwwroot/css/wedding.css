@@ -1,8 +1,9 @@
 .container {
-    width: 100%;
-    max-width: 900px;
+    width: 95%;
+    max-width: 770px;
+    margin-left: 10px;
     padding: 10px;
-    border-top: 8px solid rgb(209, 224, 140);
+    border-top: 8px solid rgb(118, 150, 141);
 }
 
 .row {
@@ -19,7 +20,7 @@
 }
 
 .col-left {
-    color: rgb(37, 29, 36);
+    color: rgb(138, 104, 148);
 }
 
 #googleMap {
@@ -27,5 +28,3 @@
     height: 400px;
 }
 
-/* var latitude = "@ViewBag.trail.Latitude";
-var longitude = "@ViewBag.trail.Longitude"; */

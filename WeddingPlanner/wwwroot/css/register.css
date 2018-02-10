@@ -1,5 +1,34 @@
 #container {
+    width: 100%;
+    max-width: 900px;
     margin-left: 5px;
+}
+
+.col {
+    vertical-align: top;
+    display: inline-block;
+}
+
+.col-left {
+    width: 45%;
+}
+
+.col-right {
+
+}
+
+img.col-right {
+    width: 350px;
+    border: 10px solid #cbdad8;
+    box-shadow: 5px 8px 10px #888888;
+}
+
+#register-h1 {
+    margin-left: 5px;
+    font-size: 3em;
+    font-family: serif;
+    line-height: .5em;
+    color: #73a08a;
 }
 
 .input-div {
@@ -9,6 +38,12 @@
 .input-label {
     display: inline-block;
     width: 150px;
+    color: #73a08a;
+    font-family: 'Tangerine', serif;
+    font-weight: bold;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-left: 10px;
 }
 
 .form-input {
@@ -26,14 +61,31 @@ input[type="submit"] {
     font-size: .75em;
     padding: 7px 10px;
     margin: 15px 0 0 10px;
-    background-color: rgb(128, 128, 128);
-    border: 2px solid rgb(39, 39, 39);
+    background-color: rgb(115, 177, 168);
+    border: 2px solid rgb(50, 94, 77);
     color: rgb(255, 255, 255);
-    border-radius: 2px;  
+    border-radius: 3px;   
 }
 
 input[type="submit"]:hover {
-    background-color: rgb(165, 0, 0);
-    border: 2px solid rgb(0, 35, 148);
-    color: #eee;
+    background-color: rgb(167, 226, 216);
+    border: 2px solid rgb(134, 165, 158);
+    color: #aaa;
+}
+
+#already-registered {
+    display: inline-block;
+    width: 45%;
+    height: 25px;
+    margin: 0 0 10px 10px;
+    color: #73a08a;
+    margin-right: 15px;
+    font-family: 'Tangerine', serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration-line: none;
+}
+
+#already-registered:hover {
+    color:  #b7cec3;
 }

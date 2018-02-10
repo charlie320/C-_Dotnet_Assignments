@@ -10,7 +10,7 @@
     display: inline-block;
     vertical-align: top;
     padding: 10px;
-    width: 46%;
+    width: 75%;
 }
 
 h1.title {
@@ -65,8 +65,4 @@ a.cancel {
 
 a.cancel:hover {
     color: #b7cac1;
-}
-
-.col-right {
-    width: 46%;
 }
