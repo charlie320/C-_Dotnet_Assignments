@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="~/css/allproducts.css">
+
+<h1>All Products Page</h1>
+
+
+<table>
+    <tr>
+        <th>ProductId</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Image URL</th>
+        <th>Quantity Available</th>
+        <th>created_at</th>
+        <th>updated_at</th>
+    </tr>
+    @{
+        foreach (var product in @ViewBag.allProducts) {
+            <tr>
+                <td>@product.ProductId</td>            
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.ImageUrl</td>
+                <td>@product.QuantityAvailable</td>
+                <td>@product.created_at</td>
+                <td>@product.updated_at</td>
+            </tr>
+        }
+    }
+
+</table>

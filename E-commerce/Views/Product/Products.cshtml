@@ -1,1 +1,74 @@
-<h1>Products page</h1>
+<link rel="stylesheet" href="~/css/products.css">
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.js"></script>
+
+@model E_Commerce.Models.Product
+
+<div id="container">
+    <div class="row">
+        <h2>Add a new product:</h2>        
+        <div class="col col-left">
+
+            <form id="register-form" action="NewProduct" method="POST">
+                <div class="col">
+
+                    <div class="input-div">
+                        <label asp-for="Name" class="input-label">Product Name:</label>
+                        <input asp-for="Name" class="form-input" id="product-name" placeholder="Product Name">
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    <div class="input-div">
+                        <label asp-for="ImageUrl" class="input-label">Image URL:</label>
+                        <input asp-for="ImageUrl" class="form-input" id="image-url" placeholder="Image Url">
+                        <span asp-validation-for="ImageUrl"></span>
+                    </div>                    
+                    <div class="input-div">
+                        <label asp-for="Description" class="input-label">Description:</label>
+                        <input asp-for="Description" class="form-input" id="product-description" placeholder="Description">
+                        <span asp-validation-for="Description"></span>
+                    </div>
+                    <div class="input-div">
+                        <label asp-for="QuantityAvailable" class="input-label">QuantityAvailable:</label>
+                        <input type="number" asp-for="QuantityAvailable" class="form-input" id="quantity-available" placeholder="Quantity Available">
+                        <span asp-validation-for="QuantityAvailable"></span>
+                    </div>
+                    <div>
+                    <input type="submit" value="Create">
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+        <div class="col col-right">
+            <h1>Column Right</h1>
+        </div>
+
+    </div>
+    <div class="row">
+        <table>
+            <tr>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Quantity Left</th>
+            </tr>
+            @{
+                foreach (var product in @ViewBag.allProducts) {
+                    <tr>
+                        <td>@product.ImageUrl</td>
+                        <td>@product.Name</td>
+                        <td>@product.QuantityAvailable</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+
+    <div>
+        @Html.ValidationSummary()
+    </div>
+
+</div>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+

@@ -22,8 +22,37 @@ namespace E_Commerce.Controllers
         [HttpGet]
         [Route("products")]
         public IActionResult Products() {
-         
+            List<Product> AllProducts = _context.Products.ToList();
+            ViewBag.allProducts = AllProducts;
             return View("Products");
+        }
+
+        [HttpPost]
+        [Route("newproduct")]
+        public IActionResult NewProduct(Product model) {
+                if(ModelState.IsValid) {
+                Product product = new Product {
+                    Name = model.Name,
+                    Description = model.Description,
+                    ImageUrl = "/Images/" + model.ImageUrl + ".jpg",
+                    QuantityAvailable = model.QuantityAvailable,
+                    created_at = DateTime.Now,
+                    updated_at = DateTime.Now
+                };
+
+                _context.Add(product);
+                _context.SaveChanges();
+                return RedirectToAction("Products");
+            }
+            return View("Products");
+        }
+
+        [HttpGet]
+        [Route("allproducts")]
+        public IActionResult AllProducts() {
+            List<Product> AllProducts = _context.Products.ToList();
+            ViewBag.allProducts = AllProducts;
+            return View("AllProducts");
         }
 
 
