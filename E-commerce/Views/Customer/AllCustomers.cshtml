@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="~/css/allcustomers.css">
+
+<h1>All Customers Page</h1>
+
+
+<table>
+    <tr>
+        <th>CustomerId</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>created_at</th>
+        <th>updated_at</th>
+        <th>Order Placed</th>
+    </tr>
+    @{
+        foreach (var customer in @ViewBag.allCustomers) {
+            <tr>
+                <td>@customer.CustomerId</td>            
+                <td>@customer.FirstName</td>
+                <td>@customer.LastName</td>
+                <td>@customer.Email</td>
+                <td>@customer.created_at</td>
+                <td>@customer.updated_at</td>
+                <td>@customer.OrdersPlaced</td>
+            </tr>
+        }
+    }
+
+</table>
