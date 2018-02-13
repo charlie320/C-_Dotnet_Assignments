@@ -1,1 +1,67 @@
-<h1>Orders page</h1>
+<link rel="stylesheet" href="~/css/customers.css">
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.js"></script>
+
+@model E_Commerce.Models.Order
+
+<div id="container">
+    <div class="row">
+        <h2>Add a new order:</h2>        
+        <div class="col col-left">
+
+            <form id="register-form" action="NewOrder" method="POST">
+                <div class="col">
+
+                    <div class="input-div">
+                        <label asp-for="CustomerId" class="input-label">Customer:</label>
+                        <select asp-for="CustomerId">
+                            @{
+                                foreach(var customer in @ViewBag.allCustomers) {
+                                    <option value=@customer.CustomerId>@customer.FirstName @customer.LastName</option>
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="Customer"></span>
+                    </div>
+                    <div>
+                    <input type="submit" value="Order">
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+        <div class="col col-right">
+            <h1>Column Right</h1>
+        </div>
+
+    </div>
+    <div class="row">
+        <table>
+            <tr>
+                <th>Customer Name</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Date</th>
+            </tr>
+            @{
+                foreach (var order in @ViewBag.allPopulatedOrders) {
+                    <tr>
+                        <td>@order.Customer.FirstName @order.Customer.LastName</td>
+                        <td>@order.Product.Name</td>
+                        <td>@order.Quantity</td>
+                        <td>@order.created_at.ToString("MMMM d, yyyy")</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+
+    <div>
+        @Html.ValidationSummary()
+    </div>
+
+</div>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+

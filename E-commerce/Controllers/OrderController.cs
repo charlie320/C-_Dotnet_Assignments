@@ -22,8 +22,20 @@ namespace E_Commerce.Controllers
         [HttpGet]
         [Route("orders")]
         public IActionResult Orders() {
-         
+            List<Order> AllPopulatedOrders = _context.Orders.Include(c => c.Customer).Include(p => p.Product).ToList();
+            ViewBag.allPopulatedOrders = AllPopulatedOrders;
+            List<Customer> AllCustomers = _context.Customers.ToList();
+            ViewBag.allCustomers = AllCustomers;
+            List<Product> AllProducts = _context.Products.ToList();
+            ViewBag.allProducts = AllProducts;
             return View("Orders");
+        }
+
+        [HttpPost]
+        [Route("neworder")]
+        public IActionResult NewOrder(Order model) {
+
+            return RedirectToAction("Orders");
         }
 
     }

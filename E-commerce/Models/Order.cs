@@ -18,7 +18,7 @@ namespace E_Commerce.Models
         [Display(Name = "Product")]
         public int ProductId {get; set;}
 
-        public Product product {get; set;}
+        public Product Product {get; set;}
 
         [Required]
         [Display(Name = "Quantity")]
