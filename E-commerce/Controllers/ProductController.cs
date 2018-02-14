@@ -34,7 +34,7 @@ namespace E_Commerce.Controllers
                 Product product = new Product {
                     Name = model.Name,
                     Description = model.Description,
-                    ImageUrl = "/Images/" + model.ImageUrl + ".jpg",
+                    ImageUrl = "/images/" + model.ImageUrl + ".jpg",
                     QuantityAvailable = model.QuantityAvailable,
                     created_at = DateTime.Now,
                     updated_at = DateTime.Now

@@ -1,1 +1,58 @@
-<h1>Dashboard Page</h1>
+<link rel="stylesheet" href="~/css/index.css">
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.js"></script>
+
+@model E_Commerce.Models.Customer
+
+<div id="container">
+    <div class="row">
+            @{
+                foreach (var product in @ViewBag.allProducts) {
+                    <div class="product-container">
+                        <div class="image-container">
+                            <img src="@product.ImageUrl">
+                        </div>
+                        <p>@product.Name</p>
+                        <p>(@product.QuantityAvailable left)</p>
+                    </div>
+                }
+            }
+    </div>
+
+
+    <div class="row">
+        <h2>Recent Orders</h2>
+        @{
+            foreach (var order in @ViewBag.allPopulatedOrders) {
+
+                <p>@order.Customer.FirstName purchased @order.Quantity @order.Product.Name&apos;s</p>
+
+            }
+        }
+
+    </div>
+
+    <div class="row">
+        <h2>New Customers</h2>
+        <table>
+            <tr>
+                <th>Customer Name</th>
+                <th>Created Date</th>
+                <th>Actions</th>
+            </tr>
+            @{
+                foreach (var customer in @ViewBag.allCustomers) {
+                    <tr>
+                        <td>@customer.FirstName @customer.LastName</td>
+                        <td>@customer.created_at.ToString("MMMM d, yyyy")</td>
+                        <td><a href="#">Remove</a></td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+
+</div>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+

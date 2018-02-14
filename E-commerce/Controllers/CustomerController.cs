@@ -23,7 +23,12 @@ namespace E_Commerce.Controllers
         [Route("")]
         [Route("index")]
         public IActionResult Index() {
-         
+            List<Order> AllPopulatedOrders = _context.Orders.Include(c => c.Customer).Include(p => p.Product).OrderByDescending(o => o.created_at).Take(3).ToList();
+            ViewBag.allPopulatedOrders = AllPopulatedOrders;
+            List<Customer> AllCustomers = _context.Customers.OrderByDescending(c => c.created_at).Take(3).ToList();
+            ViewBag.allCustomers = AllCustomers;
+            List<Product> AllProducts = _context.Products.ToList();
+            ViewBag.allProducts = AllProducts;
             return View("Index");
         }
 
