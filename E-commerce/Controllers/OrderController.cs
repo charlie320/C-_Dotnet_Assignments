@@ -34,8 +34,23 @@ namespace E_Commerce.Controllers
         [HttpPost]
         [Route("neworder")]
         public IActionResult NewOrder(Order model) {
+            if(ModelState.IsValid) {
+                Order order = new Order {
+                    CustomerId = model.CustomerId,
+                    ProductId = model.ProductId,
+                    Quantity = model.Quantity,
+                    created_at = DateTime.Now,
+                    updated_at = DateTime.Now
+                };
+                _context.Add(order);
 
-            return RedirectToAction("Orders");
+                Product RetrievedProduct = _context.Products.SingleOrDefault(p => p.ProductId == model.ProductId);
+                RetrievedProduct.QuantityAvailable -= model.Quantity;
+                
+                _context.SaveChanges();
+                return RedirectToAction("Orders");
+            }
+            return View("Orders");
         }
 
     }

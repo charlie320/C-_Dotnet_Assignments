@@ -22,8 +22,27 @@
                         </select>
                         <span asp-validation-for="Customer"></span>
                     </div>
+
+                    <div class="input-div">
+                        <label asp-for="ProductId" class="input-label">Product:</label>
+                        <select asp-for="ProductId">
+                            @{
+                                foreach(var product in @ViewBag.allProducts) {
+                                    <option value=@product.ProductId>@product.Name</option>
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="Customer"></span>
+                    </div>
+
+                    <div class="input-div">
+                        <label asp-for="Quantity" class="input-label">Quantity:</label>
+                        <input type="number" asp-for="Quantity" class="form-input" id="order-quantity" placeholder="Quantity">
+                        <span asp-validation-for="Quantity"></span>
+                    </div>
+
                     <div>
-                    <input type="submit" value="Order">
+                        <input type="submit" value="Order">
                     </div>
 
                 </div>
