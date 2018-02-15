@@ -40,27 +40,21 @@
 
         </div>
         <div class="col col-right">
-            <h1>Column Right</h1>
+            <div class="row">
+                @{
+                    foreach (var product in @ViewBag.allProducts) {
+                        <div class="product-container">
+                            <div class="image-container">
+                                <img src="@product.ImageUrl">
+                            </div>
+                            <p>@product.Name</p>
+                            <p>(@product.QuantityAvailable left)</p>
+                        </div>
+                    }
+                }
+            </div>
         </div>
 
-    </div>
-    <div class="row">
-        <table>
-            <tr>
-                <th>Image</th>
-                <th>Product</th>
-                <th>Quantity Left</th>
-            </tr>
-            @{
-                foreach (var product in @ViewBag.allProducts) {
-                    <tr>
-                        <td>@product.ImageUrl</td>
-                        <td>@product.Name</td>
-                        <td>@product.QuantityAvailable</td>
-                    </tr>
-                }
-            }
-        </table>
     </div>
 
     <div>

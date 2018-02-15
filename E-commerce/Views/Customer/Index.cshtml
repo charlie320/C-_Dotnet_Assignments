@@ -23,9 +23,7 @@
         <h2>Recent Orders</h2>
         @{
             foreach (var order in @ViewBag.allPopulatedOrders) {
-
-                <p>@order.Customer.FirstName purchased @order.Quantity @order.Product.Name&apos;s</p>
-
+                <p class="recent-order-p">@order.Customer.FirstName purchased @order.Quantity @order.Product.Name&apos;s</p>
             }
         }
 
